@@ -1,4 +1,4 @@
-import './AddNew.css';
+import './AddNewColumn.css';
 import React from 'react';
 
 const AddNew = ({ children }) => {
