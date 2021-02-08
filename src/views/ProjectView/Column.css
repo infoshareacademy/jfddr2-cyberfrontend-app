@@ -2,11 +2,11 @@
 .project-canvas {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .column {
   width: 377px;
-  display: flex;
   flex-direction: column;
   background: #574b90;
   font-size: 1.3rem;
@@ -27,8 +27,10 @@
   padding: 8px;
 }
 
-.column-title {
+.column-title,
+.add-task {
   width: 233px;
+  margin: auto 0 auto 0;
 }
 
 .column-title {
