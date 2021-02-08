@@ -7,18 +7,8 @@ const App = () => {
   return (
     //temporarly className
     <div className="project-canvas">
-      <Column>
-        <AddNew />
-      </Column>
-      <Column>
-        <AddNew />
-      </Column>
-      <Column>
-        <AddNew />
-      </Column>
-      <Column>
-        <AddNew />
-      </Column>
+      <Column label="TODO" />
+      <Column />
       <AddNew />
     </div>
   );
