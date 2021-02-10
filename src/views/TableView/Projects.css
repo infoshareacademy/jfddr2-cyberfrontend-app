@@ -1,0 +1,17 @@
+.fav__projects {
+  background-color: lightgreen;
+  padding: 20px;
+}
+.all__projects {
+  background-color: lightskyblue;
+  padding: 20px;
+}
+.arch__projects {
+  background-color: coral;
+  padding: 20px;
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+}
