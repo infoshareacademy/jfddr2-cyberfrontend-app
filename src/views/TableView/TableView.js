@@ -1,7 +1,9 @@
+import Projects from "./Projects";
+
 function TableView() {
   return (
     <div>
-      <p>test</p>
+      <Projects />
     </div>
   );
 }
