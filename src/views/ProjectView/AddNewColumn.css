@@ -1,0 +1,17 @@
+.new-column {
+  width: 377px;
+  background: #574b90;
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  margin: 3px;
+  padding: 8px;
+  height: 45px;
+}
+
+.add-column {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 244px;
+  margin-left: 18px;
+}
