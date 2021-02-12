@@ -1,4 +1,4 @@
-import Projects from "./Projects";
+import Projects from './Projects';
 
 function TableView() {
   return (

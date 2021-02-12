@@ -1,19 +1,26 @@
 import './index-reset.css';
-import React from 'react';
-import Column from '../src/views/ProjectView/Column.js';
-import AddNew from './views/ProjectView/AddNewColumn.js';
-import TopNav from './views/TopNav/TopNav';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProjectView from './views/ProjectView/ProjectView';
 import TableView from './views/TableView/TableView';
+import Nav from './views/Nav/Nav';
 
 const App = () => {
   return (
-    <div className="project-canvas">
-      <Column label="TODO" />
-      <Column />
-      <AddNew />
-      <TopNav />
-      <TableView />
-    </div>
+    <Router>
+      <Nav />
+
+      <Switch>
+        <Route path="/project">
+          <ProjectView />
+        </Route>
+        <Route path="/table">
+          <TableView />
+        </Route>
+        {/* <Route path="/">
+          <ProjectView />
+        </Route> */}
+      </Switch>
+    </Router>
   );
 };
 
