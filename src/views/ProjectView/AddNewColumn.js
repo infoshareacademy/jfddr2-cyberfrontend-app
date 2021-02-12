@@ -1,7 +1,7 @@
 import './AddNewColumn.css';
 import React from 'react';
 
-const AddNew = () => {
+const AddNewColumn = () => {
   return (
     <div className="new-column">
       <div className="add-column">+ Dodaj kolejną kolumnę</div>
@@ -9,4 +9,4 @@ const AddNew = () => {
   );
 };
 
-export default AddNew;
+export default AddNewColumn;
