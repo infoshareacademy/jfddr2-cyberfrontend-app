@@ -4,10 +4,10 @@ import './Nav.css';
 
 function TopNav() {
   return (
-    <nav>
-      <ul>
+    <nav className="nav">
+      <ul className="class__list">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Landing Page</Link>
         </li>
         <li>
           <Link to="/table">Table</Link>

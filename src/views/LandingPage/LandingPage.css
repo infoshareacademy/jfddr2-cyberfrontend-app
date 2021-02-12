@@ -1,0 +1,26 @@
+.form__containerButtonUp,
+.form__containerButtonIn {
+  width: 46vw;
+  height: 12vh;
+  color: whitesmoke;
+  font-size: 20px;
+  border-radius: 1rem;
+}
+
+.form__container {
+  position: relative;
+}
+
+.form__containerButtonUp {
+  position: absolute;
+  top: 30vh;
+  left: 25vw;
+  background-color: brown;
+}
+
+.form__containerButtonIn {
+  position: absolute;
+  top: 48vh;
+  left: 25vw;
+  background-color: coral;
+}
