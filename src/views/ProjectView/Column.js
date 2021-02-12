@@ -1,19 +1,15 @@
 import './Column.css';
 import React from 'react';
+import ColumnHeader from './ColumnHeader';
 import ColumnContent from './ColumnContent';
+import ColumnFooter from './ColumnFooter';
 
-const Column = ({ label = 'Your Column' }) => {
+const Column = () => {
   return (
     <div className="column">
-      <div className="column-header">
-        <input className="column-title" type="text" defaultValue={label} />
-        <div className="column-options">...</div>
-      </div>
+      <ColumnHeader label="Hi" />
       <ColumnContent />
-      <div className="column-footer">
-        <div className="add-task">+ Dodaj kolejną task</div>
-        <div className="column-options">...</div>
-      </div>
+      <ColumnFooter />
     </div>
   );
 };
