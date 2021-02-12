@@ -9,7 +9,6 @@ const App = () => {
   return (
     <Router>
       <Nav />
-      <LoginButton />
       <Switch>
         <Route path="/project">
           <ProjectView />
@@ -17,9 +16,9 @@ const App = () => {
         <Route path="/table">
           <TableView />
         </Route>
-        {/* <Route path="/">
-          <ProjectView />
-        </Route> */}
+        <Route path="/">
+          <LoginButton />
+        </Route>
       </Switch>
     </Router>
   );
