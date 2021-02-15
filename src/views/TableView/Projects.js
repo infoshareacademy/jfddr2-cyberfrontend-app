@@ -3,7 +3,7 @@ import "./Projects.css";
 import NewProjectBtn from "./NewProjectBtn";
 import "./NewProjectBtn.css";
 
-function Projects() {
+function Projects({ data, setData }) {
   return (
     <div>
       <div className="fav__projects">
