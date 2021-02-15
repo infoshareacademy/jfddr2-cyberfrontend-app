@@ -1,13 +1,12 @@
 import './Column.css';
-import React from 'react';
 import ColumnHeader from './ColumnHeader';
 import ColumnContent from './ColumnContent';
 import ColumnFooter from './ColumnFooter';
 
-const Column = () => {
+const Column = ({ label }) => {
   return (
     <div className="column">
-      <ColumnHeader label="Hi" />
+      <ColumnHeader label={label} />
       <ColumnContent />
       <ColumnFooter />
     </div>
