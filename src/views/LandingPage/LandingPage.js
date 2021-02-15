@@ -4,8 +4,8 @@ import './LandingPage.css';
 const LoginButton = () => {
     return (
         <div>
-            <button class="form__containerButtonUp" type="submit">SIGN UP</button>
-            <button class="form__containerButtonIn" type="submit">SIGN IN</button>
+            <button className="sign_up_button" type="submit">SIGN UP</button>
+            <button className="sign_in_button" type="submit">SIGN IN</button>
         </div>
     )
 }
