@@ -1,5 +1,8 @@
 import SingleProject from "./SingleProject";
 import "./Projects.css";
+import NewProjectBtn from "./NewProjectBtn";
+import "./NewProjectBtn.css";
+
 function Projects() {
   return (
     <div>
@@ -17,6 +20,7 @@ function Projects() {
           <SingleProject />
           <SingleProject />
           <SingleProject />
+          <NewProjectBtn />
         </div>
       </div>
       <div className="arch__projects">
