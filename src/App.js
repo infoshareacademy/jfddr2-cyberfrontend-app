@@ -12,15 +12,20 @@ import { useEffect, useState } from "react";
 firebase.initializeApp(firebaseConfig);
 
 const App = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   useEffect(() => {
     firebase
       .firestore()
       .collection("users")
-      .onSnapshot((users) => {
-        users.forEach((user) => {
-          setData(user.data());
+      .get()
+      .then((snapshot) => {
+        const users = snapshot.docs.map((user) => {
+          return {
+            ...user.data(),
+            id: user.id,
+          };
         });
+        setData(users);
       });
   }, []);
   return (
