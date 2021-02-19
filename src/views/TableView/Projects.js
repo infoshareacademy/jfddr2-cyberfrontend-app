@@ -1,6 +1,6 @@
 import SingleProject from "./SingleProject";
 import "./Projects.css";
-// import NewProjectBtn from "./NewProjectBtn";
+import NewProjectBtn from "./NewProjectBtn";
 import "./NewProjectBtn.css";
 
 function Projects({ data, setData }) {
@@ -16,7 +16,7 @@ function Projects({ data, setData }) {
           {projectsArr
             .filter((project) => project.favourite === true)
             .map(() => {
-              return <SingleProject key={data.id} data={data} />;
+              return <SingleProject key={data} data={data} />;
             })}
         </div>
       </div>
@@ -24,8 +24,9 @@ function Projects({ data, setData }) {
         <h3>All Projects</h3>
         <div className="projects-container">
           {projectsArr.map(() => {
-            return <SingleProject key={data.id} data={projectsArr} />;
+            return <SingleProject key={data} data={projectsArr} />;
           })}
+          <NewProjectBtn />
         </div>
       </div>
       <div className="arch__projects">
@@ -34,7 +35,7 @@ function Projects({ data, setData }) {
           {projectsArr
             .filter((project) => project.archive === true)
             .map(() => {
-              return <SingleProject key={data.id} data={data} />;
+              return <SingleProject key={data} data={data} />;
             })}
         </div>
       </div>
