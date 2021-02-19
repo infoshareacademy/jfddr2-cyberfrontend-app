@@ -28,6 +28,7 @@ const App = () => {
         setData(users);
       });
   }, []);
+
   return (
     <Router>
       <Nav />

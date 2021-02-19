@@ -1,11 +1,11 @@
 import "./SingleProject.css";
 
 function SingleProject({ data }) {
-  // console.log(data);
+  console.log(data);
   return (
     <div className="single-project">
-      <p>Name</p>
-      <p>project ID</p>
+      <p>{data.projectName}</p>
+      <p>{data.projectId}</p>
     </div>
   );
 }

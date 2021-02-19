@@ -4,27 +4,30 @@ import NewProjectBtn from "./NewProjectBtn";
 import "./NewProjectBtn.css";
 
 function Projects({ data, setData }) {
-  const projectsArr = data.map((element) => {
-    return { ...element.board };
-  });
-  console.log(projectsArr);
+  const userProjects = data?.[0]?.board || {};
+  console.log(data);
+  console.log(userProjects);
+  console.log(Object.keys(userProjects));
+
   return (
     <div>
       <div className="fav__projects">
         <h3>Favourite</h3>
         <div>
-          {projectsArr
-            .filter((project) => project.favourite === true)
-            .map(() => {
-              return <SingleProject key={data} data={data} />;
+          {Object.keys(userProjects)
+            .filter((project) => {
+              return userProjects[project].favourite;
+            })
+            .map((project, key) => {
+              return <SingleProject key={key} data={userProjects[project]} />;
             })}
         </div>
       </div>
       <div className="all__projects">
         <h3>All Projects</h3>
         <div className="projects-container">
-          {projectsArr.map(() => {
-            return <SingleProject key={data} data={projectsArr} />;
+          {Object.keys(userProjects).map((project, key) => {
+            return <SingleProject key={key} data={userProjects[project]} />;
           })}
           <NewProjectBtn />
         </div>
@@ -32,10 +35,12 @@ function Projects({ data, setData }) {
       <div className="arch__projects">
         <h3>ARCHIVE</h3>
         <div>
-          {projectsArr
-            .filter((project) => project.archive === true)
-            .map(() => {
-              return <SingleProject key={data} data={data} />;
+          {Object.keys(userProjects)
+            .filter((project) => {
+              return userProjects[project].archive;
+            })
+            .map((project, key) => {
+              return <SingleProject key={key} data={userProjects[project]} />;
             })}
         </div>
       </div>
