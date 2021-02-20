@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ProjectView from './views/ProjectView/ProjectView';
 import TableView from './views/TableView/TableView';
 import Nav from './views/Nav/Nav';
-import LoginButton from './views/LandingPage/LandingPage'
+import MyApp from './views/LandingPage/MyApp';
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
           <TableView />
         </Route>
         <Route path="/">
-          <LoginButton />
+          <MyApp />
         </Route>
       </Switch>
     </Router>
