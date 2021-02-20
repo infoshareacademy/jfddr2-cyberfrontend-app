@@ -19,12 +19,15 @@
 // export default Register;
 
 import { React } from "react";
+import RegisterValue from "./RegisterValue";
 
 const FormSignup = () => {
+    const { handleSubmit, handleChange, values, errors } = RegisterValue();
     return (
         <div className="form-content-right">
-            <form className="form">
-                <h2>Nice to see you! Create your account by filling out the form below.</h2>
+            <form className="form" onSubmit={handleSubmit}>
+                <h2>Nice to see you!</h2>
+                <h3> Create your account by filling out the form below.</h3>
                 <div className="forms-inputs">
                     <label for="username"
                         className="form-label">
@@ -36,6 +39,8 @@ const FormSignup = () => {
                         name="username"
                         className="form-input"
                         placeholder="Please enter your username"
+                        value={values.username}
+                        onChange={handleChange}
                     />
                 </div>
 
@@ -50,6 +55,8 @@ const FormSignup = () => {
                         name="email"
                         className="form-input"
                         placeholder="Please enter your email"
+                        value={values.email}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="forms-inputs">
@@ -64,6 +71,8 @@ const FormSignup = () => {
                         className="form-input"
                         placeholder="Please enter your password"
                         required
+                        value={values.password}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="forms-inputs">
@@ -78,12 +87,15 @@ const FormSignup = () => {
                         className="form-input"
                         placeholder="Confirm your password"
                         required
+                        value={values.password2}
+                        onChange={handleChange}
                     />
                 </div>
                 <button className="form-input-btn"
                     type="submit">SIGN UP</button>
+                <br />
                 <span className="form-input-login">
-                    Press the button if you have an account <a href="gosia.com">Here</a>
+                    If you have an account press <a href="gosia.com">Here</a>
                 </span>
             </form>
         </div>

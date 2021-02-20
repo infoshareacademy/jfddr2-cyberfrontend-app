@@ -1,14 +1,14 @@
 import React from "react";
 import Form from "./Form";
-import LoginButton from "./LandingPage";
+// import LoginButton from "./LandingPage";
+import './style.css';
 
-function myApp() {
+function MyApp() {
     return (
         <div>
             <Form />
-            <h1>hej mleka?</h1>
         </div>
     )
 }
 
-export default myApp;
+export default MyApp;
