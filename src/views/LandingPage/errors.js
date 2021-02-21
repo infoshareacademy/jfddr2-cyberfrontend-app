@@ -1,4 +1,6 @@
-const errors = (values) => {
+export default function errorsInForm(values) {
+
+
     let errors = {};
     if (!values.username.trim()) {
         errors.username = 'Username required';
@@ -23,4 +25,4 @@ const errors = (values) => {
     return errors;
 }
 
-export default errors;
+// export default errorsInForm;
