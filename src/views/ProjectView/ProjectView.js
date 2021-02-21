@@ -1,18 +1,23 @@
 import Column from './Column';
-import AddNew from './AddNewColumn';
+import AddNewColumn from './AddNewColumn';
 
-const ProjectView = () => {
-  // const { board } = data[0];
-  // const { projectContent } = board[0];
-
-  // const userColumns = projectContent.map((column, index) => {
-  //   return <Column key={index} label={column.columnName} />;
-  // });
+const ProjectView = ({ data, setData }) => {
+  const fetchedData = () => {
+    if (!data || Object.keys(data).length === 0) {
+      return <div>Loading...</div>;
+    } else {
+      const columnsInProject = data[0]?.board.project0.projectContent;
+      const userColumns = Object.keys(columnsInProject)?.map((key, index) => {
+        return <Column key={index} label={columnsInProject[key].columnName} />;
+      });
+      return userColumns;
+    }
+  };
 
   return (
     <div className="project-canvas">
-      {/* {userColumns} */}
-      <AddNew />
+      {fetchedData()}
+      <AddNewColumn data={data} />
     </div>
   );
 };
