@@ -1,13 +1,12 @@
+import "./LandingPage.css";
 
-// import './LandingPage.css';
+const LoginButton = () => {
+    return (
+        <div>
+            <button className="form__containerButtonUp" type="submit">SIGN UP</button>
+            <button className="form__containerButtonIn" type="submit">SIGN IN</button>
+        </div>
+    );
+};
 
-// const LoginButton = () => {
-//   return (
-//     <div>
-//       <button className="sign_up_button" type="submit">SIGN UP</button>
-//       <button className="sign_in_button" type="submit">SIGN IN</button>
-//     </div>
-//   )
-// }
-
-// export default LoginButton;
+export default LoginButton;
