@@ -1,13 +1,13 @@
 .fav__projects {
-  background-color: lightgreen;
+  border: 2px dotted black;
   padding: 20px;
 }
 .all__projects {
-  background-color: lightskyblue;
+  border: 2px dotted black;
   padding: 20px;
 }
 .arch__projects {
-  background-color: coral;
+  border: 2px dotted black;
   padding: 20px;
 }
 

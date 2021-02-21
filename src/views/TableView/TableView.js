@@ -1,9 +1,10 @@
-import Projects from './Projects';
+import Projects from "./Projects";
 
-function TableView() {
+function TableView({ data, setData }) {
+  // console.log(data, setData);
   return (
     <div>
-      <Projects />
+      <Projects data={data} />
     </div>
   );
 }
