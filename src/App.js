@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProjectView from "./views/ProjectView/ProjectView";
 import TableView from "./views/TableView/TableView";
 import Nav from "./views/Nav/Nav";
-import LoginButton from "./views/LandingPage/LandingPage";
 import { useEffect, useState } from "react";
+import MyApp from "./views/LandingPage/MyApp";
 firebase.initializeApp(firebaseConfig);
 
 const App = () => {
@@ -40,7 +40,7 @@ const App = () => {
           <TableView data={data} setData={setData} />
         </Route>
         <Route path="/">
-          <LoginButton data={data} setData={setData} />
+          <MyApp />
         </Route>
       </Switch>
     </Router>
