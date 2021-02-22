@@ -70,3 +70,24 @@ export const dummyProject0 = {
     column2: dummyColumns2,
   },
 };
+
+//Add 3 projects to user[0] board
+// const addNewColumn = () => {
+//     const id = data[0].id;
+//     console.log(id);
+
+//     firebase
+//       .firestore()
+//       .collection('users')
+//       .doc(id)
+//       .update({
+//         board: {
+//           project0: dummyProject0,
+//           project1: dummyProject1,
+//           project2: dummyProject2,
+//         },
+//       })
+//       .then(() => {
+//         console.log('Document successfully updated!');
+//       });
+//   };

@@ -7,8 +7,15 @@ const ProjectView = ({ data, setData }) => {
       return <div>Loading...</div>;
     } else {
       const columnsInProject = data[0]?.board.project0.projectContent;
-      const userColumns = Object.keys(columnsInProject)?.map((key, index) => {
-        return <Column key={index} label={columnsInProject[key].columnName} />;
+      const userColumns = Object.keys(columnsInProject)?.map((key) => {
+        return (
+          <Column
+            key={key}
+            index={key}
+            label={columnsInProject[key].columnName}
+            data={data}
+          />
+        );
       });
       return userColumns;
     }

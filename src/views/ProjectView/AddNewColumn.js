@@ -1,62 +1,51 @@
 import './AddNewColumn.css';
 import firebase from 'firebase/app';
-import { useState } from 'react';
-import { dummyProject0, dummyProject1, dummyProject2 } from './dummyData';
+import { useState, useEffect } from 'react';
+// import { dummyProject0, dummyProject1, dummyProject2 } from './dummyData';
 
 const AddNewColumn = ({ data }) => {
   const [title, setTitle] = useState('');
+  const [index, setIndex] = useState(0);
+  const [currentCollumnContent, setCurrentCollumnContent] = useState({});
+
+  useEffect(() => {
+    if (!data || Object.keys(data).length === 0) {
+      return <div>Loading...</div>;
+    } else {
+      const columnsOfUser = data[0].board.project0.projectContent;
+      const projectLength = Object.keys(columnsOfUser).length;
+      setCurrentCollumnContent(columnsOfUser);
+      setIndex(projectLength);
+    }
+  }, [data]);
 
   const addNewColumn = () => {
     const id = data[0].id;
-    console.log(id);
 
     firebase
       .firestore()
       .collection('users')
       .doc(id)
       .update({
-        board: {
-          project0: dummyProject0,
-          project1: dummyProject1,
-          project2: dummyProject2,
+        'board.project0.projectContent': {
+          ...currentCollumnContent,
+          ['column' + index]: {
+            columnName: title,
+            columnContent: {},
+          },
         },
       })
       .then(() => {
-        console.log('Document successfully updated!');
+        setTitle('Document successfully updated!');
       });
-  };
-
-  const addTodoHandler = (e) => {
-    if (e.key === 'Enter' && title.trim()) {
-      const newTitle = {
-        content: title,
-        isCompleted: false,
-      };
-      console.log(newTitle);
-      console.log(data);
-
-      // addTodoToDb(todo)
-      //   .then((res) => {
-      //     if (res.ok) {
-      //       setText(todo);
-      //       setText('');
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
-    }
+    setTitle('');
   };
 
   return (
     <div className="new-column">
       <div className="add-column">
         <button onClick={addNewColumn}>➕</button>{' '}
-        <input
-          type="text"
-          onChange={(e) => setTitle(e.target.value)}
-          onKeyDown={addTodoHandler}
-        />
+        <input type="text" onChange={(e) => setTitle(e.target.value)} />
       </div>
     </div>
   );

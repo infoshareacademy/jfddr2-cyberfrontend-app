@@ -3,12 +3,12 @@ import ColumnHeader from './ColumnHeader';
 import ColumnContent from './ColumnContent';
 import ColumnFooter from './ColumnFooter';
 
-const Column = ({ label }) => {
+const Column = ({ label, index, data }) => {
   return (
     <div className="column">
       <ColumnHeader label={label} />
       <ColumnContent />
-      <ColumnFooter />
+      <ColumnFooter index={index} data={data} />
     </div>
   );
 };
