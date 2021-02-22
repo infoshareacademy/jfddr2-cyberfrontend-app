@@ -3,7 +3,7 @@ import Form from "./Form";
 // import LoginButton from "./LandingPage";
 import './style.css';
 
-function MyApp() {
+const Register = () => {
     return (
         <div>
             <Form />
@@ -11,4 +11,4 @@ function MyApp() {
     )
 }
 
-export default MyApp;
+export default Register;

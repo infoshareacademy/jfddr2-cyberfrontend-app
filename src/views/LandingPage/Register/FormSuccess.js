@@ -1,6 +1,5 @@
 
-import react from "react";
-export default function FormSuccess() {
+const FormSuccess = () => {
     return (
         <div className="form-content-right">
             <div className="form-success">
@@ -11,3 +10,4 @@ export default function FormSuccess() {
     );
 }
 
+export default FormSuccess;

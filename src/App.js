@@ -8,7 +8,7 @@ import ProjectView from "./views/ProjectView/ProjectView";
 import TableView from "./views/TableView/TableView";
 import Nav from "./views/Nav/Nav";
 import { useEffect, useState } from "react";
-import MyApp from "./views/LandingPage/MyApp";
+import LandingView from "./views/LandingPage/LandingPage";
 firebase.initializeApp(firebaseConfig);
 
 const App = () => {
@@ -40,7 +40,7 @@ const App = () => {
           <TableView data={data} setData={setData} />
         </Route>
         <Route path="/">
-          <MyApp />
+          <LandingView data={data} setData={setData} />
         </Route>
       </Switch>
     </Router>
