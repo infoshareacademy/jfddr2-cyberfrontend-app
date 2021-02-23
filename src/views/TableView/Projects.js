@@ -1,13 +1,13 @@
-import SingleProject from "./SingleProject";
-import "./Projects.css";
-import NewProjectBtn from "./NewProjectBtn";
-import "./NewProjectBtn.css";
+import SingleProject from './SingleProject';
+import './Projects.css';
+import NewProjectBtn from './NewProjectBtn';
+import './NewProjectBtn.css';
 
 function Projects({ data, setData }) {
   const userProjects = data?.[0]?.board || {};
-  console.log(data);
-  console.log(userProjects);
-  console.log(Object.keys(userProjects));
+  // console.log(data);
+  // console.log(userProjects);
+  // console.log(Object.keys(userProjects));
 
   return (
     <div>
