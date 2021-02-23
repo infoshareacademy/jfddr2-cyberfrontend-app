@@ -1,12 +1,13 @@
 import './AddNewColumn.css';
 import firebase from 'firebase/app';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 // import { dummyProject0, dummyProject1, dummyProject2 } from './dummyData';
 
 const AddNewColumn = ({ data }) => {
   const [title, setTitle] = useState('');
   const [index, setIndex] = useState(0);
   const [currentCollumnContent, setCurrentCollumnContent] = useState({});
+  const inputRef = useRef();
 
   useEffect(() => {
     if (!data || Object.keys(data).length === 0) {
@@ -21,6 +22,7 @@ const AddNewColumn = ({ data }) => {
 
   const addNewColumn = () => {
     const id = data[0].id;
+    const columnId = 'column' + index + title.slice(0, 2);
 
     firebase
       .firestore()
@@ -29,23 +31,32 @@ const AddNewColumn = ({ data }) => {
       .update({
         'board.project0.projectContent': {
           ...currentCollumnContent,
-          ['column' + index]: {
+          [columnId]: {
             columnName: title,
             columnContent: {},
           },
         },
       })
       .then(() => {
-        setTitle('Document successfully updated!');
+        console.log('Document successfully updated!');
       });
-    setTitle('');
+    inputRef.current.value = '';
   };
 
   return (
     <div className="new-column">
       <div className="add-column">
-        <button onClick={addNewColumn}>➕</button>{' '}
-        <input type="text" onChange={(e) => setTitle(e.target.value)} />
+        <button
+          // onClick={addNewColumn}
+          onClick={addNewColumn}
+        >
+          ➕
+        </button>{' '}
+        <input
+          ref={inputRef}
+          type="text"
+          onChange={(e) => setTitle(e.target.value)}
+        />
       </div>
     </div>
   );
