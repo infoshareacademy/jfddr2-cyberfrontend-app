@@ -6,7 +6,7 @@ import ColumnFooter from './ColumnFooter';
 const Column = ({ label, index, data }) => {
   return (
     <div className="column">
-      <ColumnHeader label={label} />
+      <ColumnHeader label={label} index={index} data={data} />
       <ColumnContent />
       <ColumnFooter index={index} data={data} />
     </div>
