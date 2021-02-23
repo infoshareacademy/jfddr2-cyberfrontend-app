@@ -24,23 +24,27 @@ const AddNewColumn = ({ data }) => {
     const id = data[0].id;
     const columnId = 'column' + index + title.slice(0, 2);
 
-    firebase
-      .firestore()
-      .collection('users')
-      .doc(id)
-      .update({
-        'board.project0.projectContent': {
-          ...currentCollumnContent,
-          [columnId]: {
-            columnName: title,
-            columnContent: {},
+    if (!title | !title.trim()) {
+      return;
+    } else {
+      firebase
+        .firestore()
+        .collection('users')
+        .doc(id)
+        .update({
+          'board.project0.projectContent': {
+            ...currentCollumnContent,
+            [columnId]: {
+              columnName: title.trim(),
+              columnContent: {},
+            },
           },
-        },
-      })
-      .then(() => {
-        console.log('Document successfully updated!');
-      });
-    inputRef.current.value = '';
+        })
+        .then(() => {
+          console.log('Document successfully updated!');
+        });
+      inputRef.current.value = '';
+    }
   };
 
   return (
