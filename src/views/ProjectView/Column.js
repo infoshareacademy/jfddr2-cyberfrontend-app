@@ -1,15 +1,14 @@
 import './Column.css';
-import React from 'react';
 import ColumnHeader from './ColumnHeader';
 import ColumnContent from './ColumnContent';
 import ColumnFooter from './ColumnFooter';
 
-const Column = () => {
+const Column = ({ label, index, data }) => {
   return (
     <div className="column">
-      <ColumnHeader label="Hi" />
+      <ColumnHeader label={label} index={index} data={data} />
       <ColumnContent />
-      <ColumnFooter />
+      <ColumnFooter index={index} data={data} />
     </div>
   );
 };
