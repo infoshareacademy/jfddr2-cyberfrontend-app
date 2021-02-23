@@ -10,10 +10,7 @@ const ColumnFooter = ({ index, data }) => {
       .firestore()
       .collection('users')
       .doc(id)
-      .update({ 'board.project0.projectContent': newData })
-      .then(() => {
-        console.log('Document successfully updated!');
-      });
+      .update({ 'board.project0.projectContent': newData });
   };
   return (
     <div className="column-footer">

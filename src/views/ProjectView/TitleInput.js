@@ -29,9 +29,6 @@ const TitleInput = ({ index, data, label, visible, setVisible }) => {
                 columnName: newTitle.trim(),
               },
             },
-          })
-          .then(() => {
-            console.log('Document successfully updated!');
           });
         setVisible(!visible);
       }

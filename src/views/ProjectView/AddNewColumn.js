@@ -24,7 +24,7 @@ const AddNewColumn = ({ data }) => {
     const id = data[0].id;
     const columnId = 'column' + index + title.slice(0, 2);
 
-    if (!title | !title.trim()) {
+    if (!title || !title.trim()) {
       return;
     } else {
       firebase
@@ -39,9 +39,6 @@ const AddNewColumn = ({ data }) => {
               columnContent: {},
             },
           },
-        })
-        .then(() => {
-          console.log('Document successfully updated!');
         });
       inputRef.current.value = '';
     }
@@ -50,16 +47,16 @@ const AddNewColumn = ({ data }) => {
   return (
     <div className="new-column">
       <div className="add-column">
-        <button
-          // onClick={addNewColumn}
-          onClick={addNewColumn}
-        >
-          ➕
-        </button>{' '}
+        <button onClick={addNewColumn}>➕</button>{' '}
         <input
           ref={inputRef}
           type="text"
           onChange={(e) => setTitle(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              addNewColumn();
+            }
+          }}
         />
       </div>
     </div>
