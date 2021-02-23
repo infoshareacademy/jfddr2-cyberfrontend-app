@@ -1,11 +1,9 @@
 import './AddNewColumn.css';
 import firebase from 'firebase/app';
 import { useState, useEffect, useRef } from 'react';
-// import { dummyProject0, dummyProject1, dummyProject2 } from './dummyData';
 
 const AddNewColumn = ({ data }) => {
   const [title, setTitle] = useState('');
-  const [index, setIndex] = useState(0);
   const [currentCollumnContent, setCurrentCollumnContent] = useState({});
   const inputRef = useRef();
 
@@ -14,15 +12,14 @@ const AddNewColumn = ({ data }) => {
       return <div>Loading...</div>;
     } else {
       const columnsOfUser = data[0].board.project0.projectContent;
-      const projectLength = Object.keys(columnsOfUser).length;
       setCurrentCollumnContent(columnsOfUser);
-      setIndex(projectLength);
     }
   }, [data]);
 
   const addNewColumn = () => {
     const id = data[0].id;
-    const columnId = 'column' + index + title.slice(0, 2);
+    const timeStamp = Date.now();
+    const columnId = 'column' + timeStamp;
 
     if (!title || !title.trim()) {
       return;
