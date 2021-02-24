@@ -33,14 +33,14 @@ const App = () => {
     <Router>
       <Nav />
       <Switch>
-        <Route path="/table">
-          <TableView data={data} setData={setData} />
-        </Route>
         <Route path="/board/:projectName">
           <ProjectView
             data={data.length !== 0 ? data[0].board : []}
             setData={setData}
           />
+        </Route>
+        <Route path="/board">
+          <TableView data={data} setData={setData} />
         </Route>
         <Route path="/">
           <MyApp />

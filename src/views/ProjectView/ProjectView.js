@@ -1,26 +1,34 @@
 import Column from "./Column";
 import AddNewColumn from "./AddNewColumn";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const ProjectView = ({ data }) => {
   let { projectName } = useParams();
-  // console.log(projectName);
+  // const [project, setProject] = useState({});
+  // useEffect(() => {
+  //   const finder = data.find((project) => project.projectName === projectName);
+  //   console.log(finder);
+  //   setProject(finder);
+  // },[]);
+
   const fetchedData = () => {
     if (!data || Object.keys(data).length === 0) {
       return <div>Loading...</div>;
     } else {
-      const columnsInProject = data[projectName].projectContent;
-      const userColumns = Object.keys(columnsInProject).map((key) => {
-        return (
-          <Column
-            key={key}
-            index={key}
-            label={columnsInProject[key].columnName}
-            data={data}
-          />
-        );
-      });
-      return userColumns;
+      // const columnsInProject = project;
+      // console.log(columnsInProject);
+      // const userColumns = Object.keys(columnsInProject).map((key) => {
+      //   return (
+      //     <Column
+      //       key={key}
+      //       index={key}
+      //       label={columnsInProject[key].columnName}
+      //       data={data}
+      //     />
+      //   );
+      // });
+      // return userColumns;
     }
   };
 
