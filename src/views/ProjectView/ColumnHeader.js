@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import TitleInput from './TitleInput';
 
-const ColumnHeader = ({ label = 'Your Column', index, data }) => {
+const ColumnHeader = ({
+  label = 'Your Column',
+  index,
+  userId,
+  columnsInProject,
+  currentProject,
+}) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -9,9 +15,11 @@ const ColumnHeader = ({ label = 'Your Column', index, data }) => {
       {visible ? (
         <TitleInput
           index={index}
-          data={data}
+          columnsInProject={columnsInProject}
           label={label}
           visible={visible}
+          userId={userId}
+          currentProject={currentProject}
           setVisible={setVisible}
         />
       ) : (
