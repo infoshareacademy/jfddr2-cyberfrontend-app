@@ -33,7 +33,7 @@ const AddNewColumn = ({ board, userId, currentProject }) => {
             [columnId]: {
               columnName: title.trim(),
               columnContent: {},
-              columnId: columnId,
+              columnId,
             },
           },
         });
