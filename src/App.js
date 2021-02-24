@@ -1,14 +1,14 @@
-import { firebaseConfig } from "../src/firebase/firebaseConfig";
-import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
-import "./index-reset.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ProjectView from "./views/ProjectView/ProjectView";
-import TableView from "./views/TableView/TableView";
-import Nav from "./views/Nav/Nav";
-import { useEffect, useState } from "react";
-import MyApp from "./views/LandingPage/MyApp";
+import { firebaseConfig } from '../src/firebase/firebaseConfig';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+import './index-reset.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProjectView from './views/ProjectView/ProjectView';
+import TableView from './views/TableView/TableView';
+import Nav from './views/Nav/Nav';
+import { useEffect, useState } from 'react';
+import MyApp from './views/LandingPage/MyApp';
 firebase.initializeApp(firebaseConfig);
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     firebase
       .firestore()
-      .collection("users")
+      .collection('users')
       .onSnapshot((snapshot) => {
         const users = snapshot.docs.map((user) => {
           return {
@@ -35,8 +35,9 @@ const App = () => {
       <Switch>
         <Route path="/board/:projectName">
           <ProjectView
-            data={data.length !== 0 ? data[0].board : []}
+            board={data.length !== 0 ? data[0].board : []}
             setData={setData}
+            userId={data.length !== 0 ? data[0].id : ''}
           />
         </Route>
         <Route path="/board">

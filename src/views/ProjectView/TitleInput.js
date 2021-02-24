@@ -1,31 +1,31 @@
 import firebase from 'firebase/app';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const TitleInput = ({ index, data, label, visible, setVisible }) => {
+const TitleInput = ({
+  index,
+  columnsInProject,
+  label,
+  visible,
+  setVisible,
+  userId,
+  currentProject,
+}) => {
   const [newTitle, setNewTitle] = useState(label);
-  const [currentCollumnContent, setCurrentCollumnContent] = useState({});
-
-  useEffect(() => {
-    const columnsOfUser = data[0].board.project0.projectContent;
-    setCurrentCollumnContent(columnsOfUser);
-  }, [data]);
 
   const updateTitleHandler = (e) => {
     if (e.key === 'Enter' && newTitle.trim()) {
-      const id = data[0].id;
-
       if (!newTitle | !newTitle.trim()) {
         return;
       } else {
         firebase
           .firestore()
           .collection('users')
-          .doc(id)
+          .doc(userId)
           .update({
-            'board.project0.projectContent': {
-              ...currentCollumnContent,
+            [`board.${currentProject.projectId}.projectContent`]: {
+              ...columnsInProject,
               [index]: {
-                ...currentCollumnContent[index],
+                ...columnsInProject[index],
                 columnName: newTitle.trim(),
               },
             },

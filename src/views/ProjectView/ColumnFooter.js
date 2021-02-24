@@ -1,15 +1,14 @@
 import firebase from 'firebase/app';
 
-const ColumnFooter = ({ index, data }) => {
+const ColumnFooter = ({ index, data, userId, currentProject }) => {
   const deleteColumn = (index) => {
-    const id = data[0].id;
-    const newData = data[0].board.project0.projectContent;
+    const newData = currentProject.projectContent;
     delete newData[index];
 
     firebase
       .firestore()
       .collection('users')
-      .doc(id)
+      .doc(userId)
       .update({ 'board.project0.projectContent': newData });
   };
   return (

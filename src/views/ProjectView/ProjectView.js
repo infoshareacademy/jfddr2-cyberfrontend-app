@@ -1,41 +1,49 @@
-import Column from "./Column";
-import AddNewColumn from "./AddNewColumn";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import Column from './Column';
+import AddNewColumn from './AddNewColumn';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-const ProjectView = ({ data }) => {
+const ProjectView = ({ board, userId }) => {
   let { projectName } = useParams();
-  // const [project, setProject] = useState({});
-  // useEffect(() => {
-  //   const finder = data.find((project) => project.projectName === projectName);
-  //   console.log(finder);
-  //   setProject(finder);
-  // },[]);
+  const [currentProject, setCurrentProject] = useState({});
+  const [columnsInProject, setColumnsInProject] = useState({});
+
+  useEffect(() => {
+    const foundProject = Object.values(board).find(
+      (project) => project.projectName === projectName
+    );
+    setCurrentProject(foundProject);
+    setColumnsInProject(foundProject.projectContent);
+  });
 
   const fetchedData = () => {
-    if (!data || Object.keys(data).length === 0) {
+    if (!board || Object.keys(board).length === 0) {
       return <div>Loading...</div>;
     } else {
-      // const columnsInProject = project;
-      // console.log(columnsInProject);
-      // const userColumns = Object.keys(columnsInProject).map((key) => {
-      //   return (
-      //     <Column
-      //       key={key}
-      //       index={key}
-      //       label={columnsInProject[key].columnName}
-      //       data={data}
-      //     />
-      //   );
-      // });
-      // return userColumns;
+      const projectColumns = Object.values(columnsInProject).map((column) => {
+        return (
+          <Column
+            key={column.columnName}
+            index={column.columnId}
+            label={column.columnName}
+            currentProject={currentProject}
+            columnsInProject={columnsInProject}
+            userId={userId}
+          />
+        );
+      });
+      return projectColumns;
     }
   };
 
   return (
     <div className="project-canvas">
       {fetchedData()}
-      {/* <AddNewColumn data={data} /> */}
+      <AddNewColumn
+        board={board}
+        userId={userId}
+        currentProject={currentProject}
+      />
     </div>
   );
 };

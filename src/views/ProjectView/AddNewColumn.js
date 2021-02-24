@@ -2,22 +2,21 @@ import './AddNewColumn.css';
 import firebase from 'firebase/app';
 import { useState, useEffect, useRef } from 'react';
 
-const AddNewColumn = ({ data }) => {
+const AddNewColumn = ({ board, userId, currentProject }) => {
   const [title, setTitle] = useState('');
   const [currentCollumnContent, setCurrentCollumnContent] = useState({});
   const inputRef = useRef();
 
   useEffect(() => {
-    if (!data || Object.keys(data).length === 0) {
+    if (!board || Object.keys(board).length === 0) {
       return <div>Loading...</div>;
     } else {
-      const columnsOfUser = data[0].board.project0.projectContent;
+      const columnsOfUser = currentProject.projectContent;
       setCurrentCollumnContent(columnsOfUser);
     }
-  }, [data]);
+  });
 
   const addNewColumn = () => {
-    const id = data[0].id;
     const timeStamp = Date.now();
     const columnId = 'column' + timeStamp;
 
@@ -27,13 +26,14 @@ const AddNewColumn = ({ data }) => {
       firebase
         .firestore()
         .collection('users')
-        .doc(id)
+        .doc(userId)
         .update({
-          'board.project0.projectContent': {
+          [`board.${currentProject.projectId}.projectContent`]: {
             ...currentCollumnContent,
             [columnId]: {
               columnName: title.trim(),
               columnContent: {},
+              columnId: columnId,
             },
           },
         });
