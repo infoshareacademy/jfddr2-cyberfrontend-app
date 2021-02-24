@@ -41,7 +41,11 @@ const App = () => {
           />
         </Route>
         <Route path="/board">
-          <TableView data={data} setData={setData} />
+          <TableView
+            data={data}
+            setData={setData}
+            userId={data.length !== 0 ? data[0].id : ''}
+          />
         </Route>
         <Route path="/">
           <MyApp />
