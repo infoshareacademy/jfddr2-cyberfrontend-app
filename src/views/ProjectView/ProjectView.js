@@ -1,12 +1,15 @@
-import Column from './Column';
-import AddNewColumn from './AddNewColumn';
+import Column from "./Column";
+import AddNewColumn from "./AddNewColumn";
+import { useParams } from "react-router-dom";
 
 const ProjectView = ({ data }) => {
+  let { projectName } = useParams();
+  // console.log(projectName);
   const fetchedData = () => {
     if (!data || Object.keys(data).length === 0) {
       return <div>Loading...</div>;
     } else {
-      const columnsInProject = data[0].board.project0.projectContent;
+      const columnsInProject = data[projectName].projectContent;
       const userColumns = Object.keys(columnsInProject).map((key) => {
         return (
           <Column
@@ -24,7 +27,7 @@ const ProjectView = ({ data }) => {
   return (
     <div className="project-canvas">
       {fetchedData()}
-      <AddNewColumn data={data} />
+      {/* <AddNewColumn data={data} /> */}
     </div>
   );
 };
