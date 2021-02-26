@@ -1,16 +1,30 @@
-import './LandingPage.css';
+import "./LandingPage.css";
+import Register from "./Register/Register";
+import Form from "./Login/Form";
+import { useState } from "react";
 
-const LoginButton = () => {
-  return (
-    <div>
-      <button className="form__containerButtonUp" type="submit">
-        SIGN UP
+const LandingView = ({ data, setData }) => {
+    const [visibleReg, setVisibleReg] = useState(false);
+    const [visibleFo, setVisibleFo] = useState(false);
+
+    return (
+        <div>
+            <button
+                onClick={() => { setVisibleFo(false); setVisibleReg(!visibleReg) }}
+                className="form__containerButtonIn"
+            >
+                SIGN UP
       </button>
-      <button className="form__containerButtonIn" type="submit">
-        SIGN IN
+            <button
+                onClick={() => { setVisibleReg(false); setVisibleFo(!visibleFo) }}
+                className="form__containerButtonIn"
+            >
+                SIGN IN
       </button>
-    </div>
-  );
+            {visibleReg ? <Register data={data} setData={setData} /> : null}
+            {visibleFo ? <Form data={data} setData={setData} /> : null}
+        </div>
+    );
 };
 
-export default LoginButton;
+export default LandingView;

@@ -1,9 +1,8 @@
 import React from "react";
 import Form from "./Form";
-// import LoginButton from "./LandingPage";
 import './style.css';
 
-function MyApp() {
+const Login = () => {
     return (
         <div>
             <Form />
@@ -11,4 +10,4 @@ function MyApp() {
     )
 }
 
-export default MyApp;
+export default Login;

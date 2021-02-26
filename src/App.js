@@ -8,7 +8,7 @@ import ProjectView from "./views/ProjectView/ProjectView";
 import TableView from "./views/TableView/TableView";
 import Nav from "./views/Nav/Nav";
 import { useEffect, useState } from "react";
-import MyApp from "./views/LandingPage/MyApp";
+import LandingView from "./views/LandingPage/LandingPage";
 firebase.initializeApp(firebaseConfig);
 
 const App = () => {
@@ -28,26 +28,27 @@ const App = () => {
         setData(users);
       });
   }, []);
+  console.log(data);
   return (
     <Router>
       <Nav />
       <Switch>
         <Route path="/board/:projectName">
           <ProjectView
-            board={data.length !== 0 ? data[0].board : []}
+            board={data.length !== 0 ? data.board : []}
             setData={setData}
-            userId={data.length !== 0 ? data[0].id : ""}
+            userId={data.length !== 0 ? data.id : ""}
           />
         </Route>
         <Route path="/board">
           <TableView
-            board={data.length !== 0 ? data[0].board : []}
+            board={data.length !== 0 ? data.board : []}
             setData={setData}
-            userId={data.length !== 0 ? data[0].id : ""}
+            userId={data.length !== 0 ? data.id : ""}
           />
         </Route>
         <Route path="/">
-          <MyApp />
+          <LandingView data={data} setData={setData} />
         </Route>
       </Switch>
     </Router>
