@@ -18,7 +18,6 @@ function SingleProject({ data }) {
     <Link to={`/board/${data.projectName}`} className="single-project">
       <p>{data.projectName}</p>
       {/* <p>{data.projectId}</p> */}
-      {/* <button onClick={deleteProject}>🚫</button> */}
     </Link>
   );
 }

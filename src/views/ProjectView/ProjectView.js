@@ -39,6 +39,7 @@ const ProjectView = () => {
 
   return (
     <div className="project-canvas">
+      <button>🚫</button>
       {fetchedData()}
       <AddNewColumn
         board={board}

@@ -4,6 +4,7 @@ import ProjectView from "./views/ProjectView/ProjectView";
 import TableView from "./views/TableView/TableView";
 import Nav from "./views/Nav/Nav";
 import { AuthGuard } from "./views/AuthGuard/AuthGuard";
+import { NewAgeProject } from "./views/NewAgeProjects/NewAgeProject";
 
 import LandingView from "./views/LandingPage/LandingPage";
 
@@ -13,6 +14,9 @@ const App = () => {
       <Router>
         <Nav />
         <Switch>
+          <Route path="/projects/:projectId">
+            <NewAgeProject />
+          </Route>
           <Route path="/board/:projectName">
             <ProjectView />
           </Route>

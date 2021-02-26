@@ -1,8 +1,10 @@
 import SingleProject from "./SingleProject";
 import "./Projects.css";
 import NewProjectBtn from "./NewProjectBtn";
+import NewProjectBtn2 from "./NewProjectBtn2";
 import "./NewProjectBtn.css";
 import { useUser } from "../../contexts/UserContext";
+import { NewAgeProjects } from "../NewAgeProjects/NewAgeProjects";
 
 function TableView() {
   const { user, userData } = useUser();
@@ -11,6 +13,12 @@ function TableView() {
   return (
     <div>
       <h3>Hello {userData.username || "Anonymous"}</h3>
+      <div>
+        <h4>New age projects</h4>
+        <NewProjectBtn2 userId={user.uid} />
+        <NewAgeProjects />
+      </div>
+
       <div className="fav__projects">
         <h3>Favourite</h3>
         <div>
