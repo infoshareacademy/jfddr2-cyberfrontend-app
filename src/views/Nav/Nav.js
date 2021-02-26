@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import './Nav.css';
+import "./Nav.css";
 
 function TopNav() {
   return (
@@ -10,10 +10,7 @@ function TopNav() {
           <Link to="/">Landing Page</Link>
         </li>
         <li>
-          <Link to="/table">Table</Link>
-        </li>
-        <li>
-          <Link to="/project">Project</Link>
+          <Link to="/board">Table</Link>
         </li>
       </ul>
     </nav>

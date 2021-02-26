@@ -1,13 +1,10 @@
-import SingleProject from "./SingleProject";
-import "./Projects.css";
-import NewProjectBtn from "./NewProjectBtn";
-import "./NewProjectBtn.css";
+import SingleProject from './SingleProject';
+import './Projects.css';
+import NewProjectBtn from './NewProjectBtn';
+import './NewProjectBtn.css';
 
 function Projects({ data, setData }) {
   const userProjects = data?.[0]?.board || {};
-  console.log(data);
-  console.log(userProjects);
-  console.log(Object.keys(userProjects));
 
   return (
     <div>
@@ -29,7 +26,7 @@ function Projects({ data, setData }) {
           {Object.keys(userProjects).map((project, key) => {
             return <SingleProject key={key} data={userProjects[project]} />;
           })}
-          <NewProjectBtn />
+          <NewProjectBtn data={data}/>
         </div>
       </div>
       <div className="arch__projects">

@@ -13,12 +13,12 @@ firebase.initializeApp(firebaseConfig);
 
 const App = () => {
   const [data, setData] = useState([]);
+
   useEffect(() => {
     firebase
       .firestore()
       .collection("users")
-      .get()
-      .then((snapshot) => {
+      .onSnapshot((snapshot) => {
         const users = snapshot.docs.map((user) => {
           return {
             ...user.data(),
@@ -28,16 +28,23 @@ const App = () => {
         setData(users);
       });
   }, []);
-
   return (
     <Router>
       <Nav />
       <Switch>
-        <Route path="/project">
-          <ProjectView data={data} setData={setData} />
+        <Route path="/board/:projectName">
+          <ProjectView
+            board={data.length !== 0 ? data[0].board : []}
+            setData={setData}
+            userId={data.length !== 0 ? data[0].id : ""}
+          />
         </Route>
-        <Route path="/table">
-          <TableView data={data} setData={setData} />
+        <Route path="/board">
+          <TableView
+            board={data.length !== 0 ? data[0].board : []}
+            setData={setData}
+            userId={data.length !== 0 ? data[0].id : ""}
+          />
         </Route>
         <Route path="/">
           <LandingView data={data} setData={setData} />
