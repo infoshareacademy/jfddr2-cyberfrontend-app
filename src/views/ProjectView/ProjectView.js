@@ -1,20 +1,21 @@
-import Column from './Column';
-import AddNewColumn from './AddNewColumn';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import Column from "./Column";
+import AddNewColumn from "./AddNewColumn";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useUser } from "../../contexts/UserContext";
 
-const ProjectView = ({ board, userId }) => {
+const ProjectView = () => {
+  const { user, userData } = useUser();
+  const userId = user.uid;
+  const board = userData.board || {};
+
   let { projectName } = useParams();
-  const [currentProject, setCurrentProject] = useState({});
-  const [columnsInProject, setColumnsInProject] = useState({});
 
-  useEffect(() => {
-    const foundProject = Object.values(board).find(
-      (project) => project.projectName === projectName
-    );
-    setCurrentProject(foundProject);
-    setColumnsInProject(foundProject.projectContent);
-  });
+  const currentProject = Object.values(board).find(
+    (project) => project.projectName === projectName
+  );
+
+  const columnsInProject = currentProject?.projectContent || {};
 
   const fetchedData = () => {
     if (!board || Object.keys(board).length === 0) {

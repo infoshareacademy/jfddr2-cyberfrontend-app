@@ -1,28 +1,15 @@
 import { useState } from "react";
 import firebase from "firebase";
 
-const LoginValue = ({ data, setData }) => {
+const LoginValue = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [uid, setUid] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        setUid(userCredential.user.uid);
-      })
-      .then(() => {
-        const currentUser = data.find(({ id }) => id === uid);
-        if (currentUser) {
-          setData(currentUser);
-          console.log(currentUser);
-        } else {
-          console.log("albo");
-        }
-      })
       .catch((error) => {
         // const errorMessage = error.message;
         alert(
