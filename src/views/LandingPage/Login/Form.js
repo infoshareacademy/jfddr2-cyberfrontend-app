@@ -1,13 +1,11 @@
-// import { useState } from "react";
-// import FormSignIn from "./FormSignIn";
-// import FormSuccess from "./FormSuccess";
+
 import LoginValue from "./LoginValue";
 
-const Form = () => {
+const Form = ({ setData, data }) => {
 
     return (
         <div>
-            <LoginValue /></div>)
+            <LoginValue data={data} setData={setData} /></div>)
 }
 
 export default Form;

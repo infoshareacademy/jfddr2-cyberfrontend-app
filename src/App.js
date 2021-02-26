@@ -28,22 +28,23 @@ const App = () => {
         setData(users);
       });
   }, []);
+  console.log(data);
   return (
     <Router>
       <Nav />
       <Switch>
         <Route path="/board/:projectName">
           <ProjectView
-            board={data.length !== 0 ? data[0].board : []}
+            board={data.length !== 0 ? data.board : []}
             setData={setData}
-            userId={data.length !== 0 ? data[0].id : ""}
+            userId={data.length !== 0 ? data.id : ""}
           />
         </Route>
         <Route path="/board">
           <TableView
-            board={data.length !== 0 ? data[0].board : []}
+            board={data.length !== 0 ? data.board : []}
             setData={setData}
-            userId={data.length !== 0 ? data[0].id : ""}
+            userId={data.length !== 0 ? data.id : ""}
           />
         </Route>
         <Route path="/">

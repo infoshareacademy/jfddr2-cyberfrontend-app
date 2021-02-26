@@ -3,7 +3,7 @@ import Register from "./Register/Register";
 import Form from "./Login/Form";
 import { useState } from "react";
 
-const LandingView = () => {
+const LandingView = ({ data, setData }) => {
     const [visibleReg, setVisibleReg] = useState(false);
     const [visibleFo, setVisibleFo] = useState(false);
 
@@ -21,8 +21,8 @@ const LandingView = () => {
             >
                 SIGN IN
       </button>
-            {visibleReg ? <Register /> : null}
-            {visibleFo ? <Form /> : null}
+            {visibleReg ? <Register data={data} setData={setData} /> : null}
+            {visibleFo ? <Form data={data} setData={setData} /> : null}
         </div>
     );
 };
