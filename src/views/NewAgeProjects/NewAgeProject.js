@@ -9,6 +9,7 @@ export const NewAgeProject = () => {
   const { user } = useUser();
   const [project, setProject] = useState(null);
   const [columns, setColumns] = useState(null);
+  const [columnName, setColumnName] = useState("");
 
   const userUid = user.uid;
 
@@ -37,28 +38,45 @@ export const NewAgeProject = () => {
     return <p>Loading...</p>;
   }
 
-  const addColumn = (name) => {
+  const addColumn = (e) => {
+    e.preventDefault();
     firebase
       .firestore()
       .collection(`users/${userUid}/projects/${projectId}/columns`)
       .add({
-        columnName: name,
-      });
+        columnName: columnName,
+      })
+      .then(() => setColumnName(""));
+  };
+
+  const deleteColumn = () => {
+    console.log("to będzie jakoś usuwać COLUMN");
   };
 
   return (
     <div>
-      <h4>{project.projectName}</h4>
-      <button onClick={() => addColumn("In progress")}>Add column</button>
+      <h1>{project.projectName}</h1>
+      <form onSubmit={addColumn}>
+        <label htmlFor="column-name">Add new column</label>
+        <input
+          id="column-name"
+          value={columnName}
+          type="text"
+          onChange={(e) => setColumnName(e.target.value)}
+        />
+      </form>
       {columns &&
         columns.map((column) => {
           return (
-            <Column
-              key={column.id}
-              project={project}
-              column={column}
-              allColumns={columns}
-            />
+            <div>
+              <Column
+                key={column.id}
+                project={project}
+                column={column}
+                allColumns={columns}
+              />
+              <button onClick={deleteColumn}>❌</button>
+            </div>
           );
         })}
     </div>

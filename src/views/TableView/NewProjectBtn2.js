@@ -26,7 +26,7 @@ function NewProjectBtn({ board, userId }) {
           })
           .then((ref) => {
             ref.collection("tasks").add({
-              title: "Be awesome",
+              taskName: "Be awesome",
             });
           });
 

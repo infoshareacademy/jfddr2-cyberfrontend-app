@@ -30,12 +30,17 @@ export const NewAgeProjects = () => {
     };
   }, [userUid]);
 
+  const deleteProject = () => {
+    console.log("to będzie jakoś usuwać PROJEKT");
+  };
+
   return (
     projects &&
     projects.map((project) => {
       return (
         <div key={project.id}>
           <Link to={`/projects/${project.id}`}>{project.projectName}</Link>
+          <button onClick={deleteProject}>❌</button>
         </div>
       );
     })
