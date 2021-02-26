@@ -1,20 +1,13 @@
-import { useState } from "react";
-import FormSignup from "./FormSignup";
-import FormSuccess from "./FormSuccess";
+// import { useState } from "react";
+// import FormSignIn from "./FormSignIn";
+// import FormSuccess from "./FormSuccess";
+import LoginValue from "./LoginValue";
 
-const Form = ({ data }) => {
-    console.log(data);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    function submitForm() {
-        setIsSubmitted(true)
-    }
+const Form = () => {
+
     return (
         <div>
-            {/* <FormSignup /> */}
-            {!isSubmitted ? (<FormSignup submitForm={submitForm} />) : (<FormSuccess data={data} />)}
-            {/* <FormSuccess /> */}
-        </div>
-    )
+            <LoginValue /></div>)
 }
 
 export default Form;
