@@ -8,7 +8,6 @@ const LoginValue = ({ data, setData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password);
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -19,6 +18,9 @@ const LoginValue = ({ data, setData }) => {
         const currentUser = data.find(({ id }) => id === uid);
         if (currentUser) {
           setData(currentUser);
+          console.log(currentUser);
+        } else {
+          console.log("albo");
         }
       })
       .catch((error) => {

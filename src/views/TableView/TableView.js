@@ -4,6 +4,7 @@ import NewProjectBtn from "./NewProjectBtn";
 import "./NewProjectBtn.css";
 
 function TableView({ board, userId }) {
+  console.log(board);
   return (
     <div>
       <div className="fav__projects">

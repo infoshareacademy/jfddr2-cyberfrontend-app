@@ -28,7 +28,7 @@ const App = () => {
         setData(users);
       });
   }, []);
-  console.log(data);
+  // console.log(data.board);
   return (
     <Router>
       <Nav />
@@ -42,7 +42,7 @@ const App = () => {
         </Route>
         <Route path="/board">
           <TableView
-            board={data.length !== 0 ? data.board : []}
+            board={data !== 0 ? data.board : []}
             setData={setData}
             userId={data.length !== 0 ? data.id : ""}
           />
