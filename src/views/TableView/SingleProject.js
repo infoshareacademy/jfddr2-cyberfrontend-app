@@ -12,12 +12,13 @@ function SingleProject({ data }) {
   //       .doc(id)
   //       .update({ board: newData })
   //       .then(() => {
-  //         console.log('Document successfully updated!');
+  //         console.log('Document successfully deleted!');
   //       });
   return (
     <Link to={`/board/${data.projectName}`} className="single-project">
       <p>{data.projectName}</p>
-      <p>{data.projectId}</p>
+      {/* <p>{data.projectId}</p> */}
+      {/* <button onClick={deleteProject}>🚫</button> */}
     </Link>
   );
 }
