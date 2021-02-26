@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 
 const ColumnFooter = ({ index, data, userId, currentProject }) => {
   const deleteColumn = (index) => {
@@ -7,9 +7,11 @@ const ColumnFooter = ({ index, data, userId, currentProject }) => {
 
     firebase
       .firestore()
-      .collection('users')
+      .collection("users")
       .doc(userId)
-      .update({ 'board.project0.projectContent': newData });
+      .update({
+        [`board.${currentProject.projectId}.projectContent`]: newData,
+      });
   };
   return (
     <div className="column-footer">
