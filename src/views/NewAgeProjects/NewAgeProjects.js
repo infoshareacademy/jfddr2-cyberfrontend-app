@@ -30,8 +30,17 @@ export const NewAgeProjects = () => {
     };
   }, [userUid]);
 
-  const deleteProject = () => {
-    console.log("to będzie jakoś usuwać PROJEKT");
+  const deleteProject = (project) => {
+    const unsubscribe = firebase
+      .firestore()
+      .collection(`users/${userUid}/projects`)
+      .doc(project.id)
+      .delete();
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   };
 
   return (
@@ -40,7 +49,7 @@ export const NewAgeProjects = () => {
       return (
         <div key={project.id}>
           <Link to={`/projects/${project.id}`}>{project.projectName}</Link>
-          <button onClick={deleteProject}>❌</button>
+          <button onClick={() => deleteProject(project)}>❌</button>
         </div>
       );
     })

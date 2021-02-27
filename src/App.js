@@ -6,11 +6,11 @@ import Nav from "./views/Nav/Nav";
 import { AuthGuard } from "./views/AuthGuard/AuthGuard";
 import { NewAgeProject } from "./views/NewAgeProjects/NewAgeProject";
 
-import LandingView from "./views/LandingPage/LandingPage";
+import LandingPage from "./views/LandingPage/LandingPage";
 
 const App = () => {
   return (
-    <AuthGuard cover={<LandingView />}>
+    <AuthGuard cover={<LandingPage />}>
       <Router>
         <Nav />
         <Switch>

@@ -15,7 +15,6 @@ export const Column = ({ column, project, allColumns }) => {
   const { user } = useUser();
   const [tasks, setTasks] = useState(null);
   const [taskName, setTaskName] = useState("");
-  // const [selectedOption, setSelectedOption] = useState("");
 
   const userUid = user.uid;
   const projectId = project.id;
@@ -37,17 +36,6 @@ export const Column = ({ column, project, allColumns }) => {
     };
   }, [userUid, projectId, columnId]);
 
-  // const addTask = (title) => {
-  //   firebase
-  //     .firestore()
-  //     .collection(
-  //       `users/${userUid}/projects/${projectId}/columns/${columnId}/tasks`
-  //     )
-  //     .add({
-  //       title: title,
-  //     });
-  // };
-
   const addTask = (e) => {
     e.preventDefault();
     firebase
@@ -62,6 +50,8 @@ export const Column = ({ column, project, allColumns }) => {
   };
 
   const moveTask = (task, targetColumnId) => {
+    console.log(task);
+
     const unsubscribe = firebase
       .firestore()
       .collection(
@@ -70,7 +60,7 @@ export const Column = ({ column, project, allColumns }) => {
       .doc(task.id)
       .set(task)
       .then(() => {
-        firebase // to będzie do usuwania pojedynczego taska
+        firebase
           .firestore()
           .collection(
             `users/${userUid}/projects/${projectId}/columns/${columnId}/tasks`
@@ -86,8 +76,6 @@ export const Column = ({ column, project, allColumns }) => {
   };
 
   const deleteTask = (task) => {
-    console.log(task);
-    console.log("to będzie jakoś usuwać TASK");
     firebase
       .firestore()
       .collection(
@@ -99,21 +87,19 @@ export const Column = ({ column, project, allColumns }) => {
 
   return (
     <>
-      <h5 key={column.id}>{column.columnName}</h5>
-      {/* <form onSubmit={addTask} autoComplete="off">
+      <h5>{column.columnName}</h5>
+      <form onSubmit={addTask} autoComplete="off">
         <label htmlFor="task-name">Add new task</label>
         <input
-          id={taskName}
           value={taskName}
           type="text"
           onChange={(e) => setTaskName(e.target.value)}
         />
-      </form> */}
+      </form>
       <ul>
         {tasks &&
           tasks.map((task) => {
             return (
-              //tutaj będzie klucz do poprawy!
               <li key={task.id}>
                 <h6>{task.taskName}</h6>
                 {/* {allColumns.map((column) => {
@@ -141,7 +127,7 @@ export const Column = ({ column, project, allColumns }) => {
                     </option>
                   ))}
                 </select>
-                <button onClick={deleteTask}>❌</button>
+                <button onClick={() => deleteTask(task)}>❌</button>
               </li>
             );
           })}

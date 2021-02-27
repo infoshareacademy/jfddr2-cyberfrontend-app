@@ -49,14 +49,23 @@ export const NewAgeProject = () => {
       .then(() => setColumnName(""));
   };
 
-  const deleteColumn = () => {
-    console.log("to będzie jakoś usuwać COLUMN");
+  const deleteColumn = (column) => {
+    const unsubscribe = firebase
+      .firestore()
+      .collection(`users/${userUid}/projects/${projectId}/columns`)
+      .doc(column.id)
+      .delete();
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   };
 
   return (
     <div>
       <h1>{project.projectName}</h1>
-      {/* <form onSubmit={addColumn} autoComplete="off">
+      <form onSubmit={addColumn} autoComplete="off">
         <label htmlFor="column-name">Add new column</label>
         <input
           id="column-name"
@@ -64,7 +73,7 @@ export const NewAgeProject = () => {
           type="text"
           onChange={(e) => setColumnName(e.target.value)}
         />
-      </form> */}
+      </form>
       {columns &&
         columns.map((column) => {
           return (
@@ -75,7 +84,7 @@ export const NewAgeProject = () => {
                 column={column}
                 allColumns={columns}
               />
-              <button onClick={deleteColumn}>❌</button>
+              <button onClick={() => deleteColumn(column)}>❌</button>
             </div>
           );
         })}

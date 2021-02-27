@@ -7,7 +7,7 @@ function TopNav() {
     <nav className="nav">
       <ul className="class__list">
         <li>
-          <Link to="/">Landing Page</Link>
+          <Link to="/">To Board</Link>
         </li>
         <li>
           <Link to="/board">Table</Link>
