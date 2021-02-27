@@ -4,29 +4,32 @@ import Form from "./Login/Form";
 import { useState } from "react";
 
 const LandingView = ({ data, setData }) => {
-  const [view, setView] = useState("none"); // sign-in | sign-up
-
-  const views = {
-    none: null,
-    "sign-in": <Register />,
-    "sign-up": <Form />,
-  };
+  const [visibleReg, setVisibleReg] = useState(false);
+  const [visibleFo, setVisibleFo] = useState(false);
 
   return (
     <div>
       <button
-        onClick={() => setView("sign-up")}
+        onClick={() => {
+          setVisibleFo(false);
+          setVisibleReg(!visibleReg);
+        }}
         className="form__containerButtonIn"
       >
         SIGN UP
       </button>
       <button
-        onClick={() => setView("sign-in")}
+        onClick={() => {
+          setVisibleReg(false);
+          setVisibleFo(!visibleFo);
+        }}
         className="form__containerButtonIn"
       >
         SIGN IN
       </button>
-      {views[view]}
+      {visibleReg ? <Register data={data} setData={setData} /> : null}
+      {visibleFo ? <Form data={data} setData={setData} /> : null}
+      <h1>Hello User!</h1>
     </div>
   );
 };

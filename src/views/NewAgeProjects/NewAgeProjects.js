@@ -48,7 +48,7 @@ export const NewAgeProjects = () => {
     projects.map((project) => {
       return (
         <div key={project.id}>
-          <Link to={`/projects/${project.id}`}>{project.projectName}</Link>
+          <Link to={`/board/project/${project.id}`}>{project.projectName}</Link>
           <button onClick={() => deleteProject(project)}>❌</button>
         </div>
       );

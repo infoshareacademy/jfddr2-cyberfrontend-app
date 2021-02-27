@@ -15,6 +15,7 @@ export const Column = ({ column, project, allColumns }) => {
   const { user } = useUser();
   const [tasks, setTasks] = useState(null);
   const [taskName, setTaskName] = useState("");
+  // const [select, setSelect] = useState("");
 
   const userUid = user.uid;
   const projectId = project.id;
@@ -50,8 +51,6 @@ export const Column = ({ column, project, allColumns }) => {
   };
 
   const moveTask = (task, targetColumnId) => {
-    console.log(task);
-
     const unsubscribe = firebase
       .firestore()
       .collection(
@@ -115,7 +114,10 @@ export const Column = ({ column, project, allColumns }) => {
                 })} */}
                 <span>Move to:</span>
                 <select
-                  onChange={(event) => moveTask(task, event.target.value)}
+                  onChange={(event) => {
+                    moveTask(task, event.target.value);
+                    // setSelect(event.target.value);
+                  }}
                 >
                   {allColumns.map((column) => (
                     <option

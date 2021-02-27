@@ -40,13 +40,18 @@ export const NewAgeProject = () => {
 
   const addColumn = (e) => {
     e.preventDefault();
-    firebase
+    const unsubscribe = firebase
       .firestore()
       .collection(`users/${userUid}/projects/${projectId}/columns`)
       .add({
         columnName: columnName,
       })
       .then(() => setColumnName(""));
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   };
 
   const deleteColumn = (column) => {

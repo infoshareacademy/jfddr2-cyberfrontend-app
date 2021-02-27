@@ -1,10 +1,10 @@
 import "./index-reset.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ProjectView from "./views/ProjectView/ProjectView";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import TableView from "./views/TableView/TableView";
 import Nav from "./views/Nav/Nav";
 import { AuthGuard } from "./views/AuthGuard/AuthGuard";
 import { NewAgeProject } from "./views/NewAgeProjects/NewAgeProject";
+import { NewAgeProjects } from "./views/NewAgeProjects/NewAgeProjects";
 
 import LandingPage from "./views/LandingPage/LandingPage";
 
@@ -14,14 +14,16 @@ const App = () => {
       <Router>
         <Nav />
         <Switch>
-          <Route path="/projects/:projectId">
+          <Route path="/board/project/:projectId">
             <NewAgeProject />
           </Route>
-          <Route path="/board/:projectName">
-            <ProjectView />
-          </Route>
-          <Route path="/">
+          <Route path="/board/">
             <TableView />
+          </Route>
+          <Route exact path="/">
+            <Link to="/board">
+              <img src="https://via.placeholder.com/150" alt="" />
+            </Link>
           </Route>
         </Switch>
       </Router>

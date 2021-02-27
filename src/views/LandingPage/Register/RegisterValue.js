@@ -23,7 +23,6 @@ const RegisterValue = (callback, validate) => {
     e.preventDefault();
     setErrors(validate(values));
     setIsSubmitted(true);
-    console.log(values);
     firebase
       .auth()
       .createUserWithEmailAndPassword(values.email, values.password)
@@ -35,7 +34,6 @@ const RegisterValue = (callback, validate) => {
         return cred;
       })
       .then((cred) => {
-        console.log(cred);
         firebase
           .firestore()
           .collection(`users/${cred.user.uid}/projects`)
