@@ -41,7 +41,7 @@ function NewProjectBtn({ board, userId }) {
   };
   return (
     <div>
-      <form onSubmit={addNewProject}>
+      <form onSubmit={addNewProject} autoComplete="off">
         <label htmlFor="project-name">Add new project</label>
         <input
           id="project-name"

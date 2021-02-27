@@ -15,6 +15,7 @@ export const Column = ({ column, project, allColumns }) => {
   const { user } = useUser();
   const [tasks, setTasks] = useState(null);
   const [taskName, setTaskName] = useState("");
+  // const [selectedOption, setSelectedOption] = useState("");
 
   const userUid = user.uid;
   const projectId = project.id;
@@ -84,17 +85,25 @@ export const Column = ({ column, project, allColumns }) => {
     };
   };
 
-  const deleteTask = () => {
+  const deleteTask = (task) => {
+    console.log(task);
     console.log("to będzie jakoś usuwać TASK");
+    firebase
+      .firestore()
+      .collection(
+        `users/${userUid}/projects/${projectId}/columns/${columnId}/tasks`
+      )
+      .doc(task.id)
+      .delete();
   };
 
   return (
     <>
       <h5 key={column.id}>{column.columnName}</h5>
-      <form onSubmit={addTask}>
+      <form onSubmit={addTask} autoComplete="off">
         <label htmlFor="task-name">Add new task</label>
         <input
-          id="task-name"
+          id={taskName}
           value={taskName}
           type="text"
           onChange={(e) => setTaskName(e.target.value)}
@@ -104,9 +113,10 @@ export const Column = ({ column, project, allColumns }) => {
         {tasks &&
           tasks.map((task) => {
             return (
+              //tutaj będzie klucz do poprawy!
               <li key={task.id}>
                 <h6>{task.taskName}</h6>
-                {allColumns.map((column) => {
+                {/* {allColumns.map((column) => {
                   return (
                     <button
                       key={column.id}
@@ -116,7 +126,21 @@ export const Column = ({ column, project, allColumns }) => {
                       {column.columnName}
                     </button>
                   );
-                })}
+                })} */}
+                <span>Move to:</span>
+                <select
+                  onChange={(event) => moveTask(task, event.target.value)}
+                >
+                  {allColumns.map((column) => (
+                    <option
+                      disabled={column.id === columnId}
+                      key={column.id}
+                      value={column.id}
+                    >
+                      {column.columnName}
+                    </option>
+                  ))}
+                </select>
                 <button onClick={deleteTask}>❌</button>
               </li>
             );

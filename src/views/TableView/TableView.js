@@ -12,16 +12,16 @@ function TableView() {
   const board = userData.board || {};
   return (
     <div>
-      <h3>
+      {/* <h3>
         Hello <span>{userData.username || "Anonymous"}</span>
       </h3>
       <div>
         <h2>This is your projects:</h2>
         <NewProjectBtn2 userId={user.uid} />
         <NewAgeProjects />
-      </div>
+      </div> */}
 
-      {/* <div className="fav__projects">
+      <div className="fav__projects">
         <h3>Favourite</h3>
         <div>
           {Object.keys(board)
@@ -53,7 +53,7 @@ function TableView() {
               return <SingleProject key={key} data={board[project]} />;
             })}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
