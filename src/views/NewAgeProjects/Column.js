@@ -100,7 +100,7 @@ export const Column = ({ column, project, allColumns }) => {
   return (
     <>
       <h5 key={column.id}>{column.columnName}</h5>
-      <form onSubmit={addTask} autoComplete="off">
+      {/* <form onSubmit={addTask} autoComplete="off">
         <label htmlFor="task-name">Add new task</label>
         <input
           id={taskName}
@@ -108,7 +108,7 @@ export const Column = ({ column, project, allColumns }) => {
           type="text"
           onChange={(e) => setTaskName(e.target.value)}
         />
-      </form>
+      </form> */}
       <ul>
         {tasks &&
           tasks.map((task) => {

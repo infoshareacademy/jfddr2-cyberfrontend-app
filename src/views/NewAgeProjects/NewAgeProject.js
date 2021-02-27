@@ -56,7 +56,7 @@ export const NewAgeProject = () => {
   return (
     <div>
       <h1>{project.projectName}</h1>
-      <form key="halo" onSubmit={addColumn} autoComplete="off">
+      {/* <form onSubmit={addColumn} autoComplete="off">
         <label htmlFor="column-name">Add new column</label>
         <input
           id="column-name"
@@ -64,13 +64,13 @@ export const NewAgeProject = () => {
           type="text"
           onChange={(e) => setColumnName(e.target.value)}
         />
-      </form>
+      </form> */}
       {columns &&
         columns.map((column) => {
           return (
-            <div>
+            <div key={column.id}>
               <Column
-                key={column.id}
+                // key={column.id}
                 project={project}
                 column={column}
                 allColumns={columns}
