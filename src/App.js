@@ -4,30 +4,33 @@ import TableView from "./views/TableView/TableView";
 import Nav from "./views/Nav/Nav";
 import { AuthGuard } from "./views/AuthGuard/AuthGuard";
 import { NewAgeProject } from "./views/NewAgeProjects/NewAgeProject";
-import { NewAgeProjects } from "./views/NewAgeProjects/NewAgeProjects";
+// import { NewAgeProjects } from "./views/NewAgeProjects/NewAgeProjects";
+import HomeView from "./views/LandingPage/HomeView";
 
 import LandingPage from "./views/LandingPage/LandingPage";
+import "./sass/main.scss";
 
 const App = () => {
   return (
-    <AuthGuard cover={<LandingPage />}>
-      <Router>
-        <Nav />
+    <Router>
+      <AuthGuard cover={<LandingPage />}>
         <Switch>
           <Route path="/board/project/:projectId">
+            <Nav />
             <NewAgeProject />
           </Route>
           <Route path="/board/">
+            <Nav />
             <TableView />
           </Route>
           <Route exact path="/">
             <Link to="/board">
-              <img src="https://via.placeholder.com/150" alt="" />
+              <HomeView />
             </Link>
           </Route>
         </Switch>
-      </Router>
-    </AuthGuard>
+      </AuthGuard>
+    </Router>
   );
 };
 

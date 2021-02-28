@@ -2,6 +2,7 @@ import { useUser } from "../../contexts/UserContext";
 import { useState, useEffect } from "react";
 import firebase from "firebase";
 import { Link } from "react-router-dom";
+import "../../sass/main.scss";
 
 export const NewAgeProjects = () => {
   const { user } = useUser();
@@ -49,7 +50,9 @@ export const NewAgeProjects = () => {
       return (
         <div key={project.id}>
           <Link to={`/board/project/${project.id}`}>{project.projectName}</Link>
-          <button onClick={() => deleteProject(project)}>❌</button>
+          <button className="deleteBtn" onClick={() => deleteProject(project)}>
+            ❌
+          </button>
         </div>
       );
     })

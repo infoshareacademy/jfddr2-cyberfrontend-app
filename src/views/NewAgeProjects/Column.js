@@ -1,6 +1,7 @@
 import { useUser } from "../../contexts/UserContext";
 import { useState, useEffect } from "react";
 import firebase from "firebase";
+import "../../sass/main.scss";
 
 const snapshotToArrayWithId = (snapshot) => {
   const items = [];
@@ -86,54 +87,70 @@ export const Column = ({ column, project, allColumns }) => {
 
   return (
     <>
-      <h5>{column.columnName}</h5>
-      <form onSubmit={addTask} autoComplete="off">
-        <label htmlFor="task-name">Add new task</label>
-        <input
-          value={taskName}
-          type="text"
-          onChange={(e) => setTaskName(e.target.value)}
-        />
-      </form>
-      <ul>
-        {tasks &&
-          tasks.map((task) => {
-            return (
-              <li key={task.id}>
-                <h6>{task.taskName}</h6>
-                {/* {allColumns.map((column) => {
-                  return (
-                    <button
-                      key={column.id}
-                      disabled={column.id === columnId}
-                      onClick={() => moveTask(task, column.id)}
-                    >
-                      {column.columnName}
-                    </button>
-                  );
-                })} */}
-                <span>Move to:</span>
-                <select
-                  onChange={(event) => {
-                    moveTask(task, event.target.value);
-                    // setSelect(event.target.value);
-                  }}
-                >
-                  {allColumns.map((column) => (
-                    <option
-                      disabled={column.id === columnId}
-                      key={column.id}
-                      value={column.id}
-                    >
-                      {column.columnName}
-                    </option>
-                  ))}
-                </select>
-                <button onClick={() => deleteTask(task)}>❌</button>
-              </li>
-            );
-          })}
-      </ul>
+      <input
+        type="radio"
+        name="select"
+        className="accordion-select"
+        checked
+        readOnly
+      />
+      <div className="accordion-title">
+        <span>{column.columnName}</span>
+      </div>
+      <div className="accordion-content">
+        <form onSubmit={addTask} autoComplete="off">
+          <label htmlFor="task-name">Add new task</label>
+          <input
+            value={taskName}
+            type="text"
+            onChange={(e) => setTaskName(e.target.value)}
+          />
+        </form>
+        <ul>
+          {tasks &&
+            tasks.map((task) => {
+              return (
+                <li key={task.id}>
+                  <h6>{task.taskName}</h6>
+                  {/* {allColumns.map((column) => {
+                    return (
+                      <button
+                        key={column.id}
+                        disabled={column.id === columnId}
+                        onClick={() => moveTask(task, column.id)}
+                      >
+                        {column.columnName}
+                      </button>
+                    );
+                  })} */}
+                  <span>Move to:</span>
+                  <select
+                    onChange={(event) => {
+                      moveTask(task, event.target.value);
+                      // setSelect(event.target.value);
+                    }}
+                  >
+                    {allColumns.map((column) => (
+                      <option
+                        disabled={column.id === columnId}
+                        key={column.id}
+                        value={column.id}
+                      >
+                        {column.columnName}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    className="deleteBtn"
+                    onClick={() => deleteTask(task)}
+                  >
+                    ❌
+                  </button>
+                </li>
+              );
+            })}
+        </ul>
+      </div>
     </>
   );
 };

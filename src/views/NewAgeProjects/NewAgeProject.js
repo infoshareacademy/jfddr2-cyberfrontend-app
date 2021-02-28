@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
 import firebase from "firebase";
 import { Column } from "./Column";
+import "../../sass/main.scss";
 
 export const NewAgeProject = () => {
   const { projectId } = useParams();
@@ -82,14 +83,19 @@ export const NewAgeProject = () => {
       {columns &&
         columns.map((column) => {
           return (
-            <div key={column.id}>
+            <div className="accordion" key={column.id}>
               <Column
                 // key={column.id}
                 project={project}
                 column={column}
                 allColumns={columns}
               />
-              <button onClick={() => deleteColumn(column)}>❌</button>
+              <button
+                className="deleteBtn"
+                onClick={() => deleteColumn(column)}
+              >
+                ❌
+              </button>
             </div>
           );
         })}

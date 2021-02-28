@@ -1,5 +1,5 @@
 import { useUser } from "../../contexts/UserContext";
-// import {useHistory} from "react-router-dom"
+// import { useHistory } from "react-router-dom";
 
 export const AuthGuard = ({ children, cover }) => {
   const { user, userData } = useUser();

@@ -1,4 +1,4 @@
-import NewProjectBtn2 from "./NewProjectBtn2";
+import NewProjectBtn from "./NewProjectBtn";
 import "./NewProjectBtn.css";
 import { useUser } from "../../contexts/UserContext";
 import { NewAgeProjects } from "../NewAgeProjects/NewAgeProjects";
@@ -18,7 +18,7 @@ function TableView() {
       <button onClick={logout}>Logout</button>
       <div>
         <h2>This is your projects:</h2>
-        <NewProjectBtn2 userId={user.uid} />
+        <NewProjectBtn userId={user.uid} />
         <NewAgeProjects />
       </div>
     </div>

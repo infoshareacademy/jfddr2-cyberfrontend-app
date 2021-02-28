@@ -1,0 +1,32 @@
+@import "_buttons.scss";
+@import "_mixins.scss";
+
+.homeView {
+  @include flexCenter;
+  .homeView__background {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../img/max-saeling-_CGxNOLM1gQ-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    filter: blur(5px) grayscale(80%);
+    z-index: -1;
+  }
+  .homeView__title {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 0.95rem;
+    color: rgb(39, 39, 39);
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.effi {
+  font-family: "Leckerli One", cursive;
+  font-size: 2rem;
+}
