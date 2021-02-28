@@ -2,6 +2,7 @@ import "./NewProjectBtn.css";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import { useState } from "react";
+import "../../sass/main.scss";
 
 function NewProjectBtn({ board, userId }) {
   const [projectName, setProjectName] = useState("");
@@ -15,6 +16,7 @@ function NewProjectBtn({ board, userId }) {
         projectName: projectName.trim(),
         archive: false,
         favourite: false,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then((ref) => {
         setProjectName("");
@@ -41,9 +43,16 @@ function NewProjectBtn({ board, userId }) {
   };
   return (
     <div>
-      <form onSubmit={addNewProject} autoComplete="off">
-        <label htmlFor="project-name">Add new project</label>
+      <form
+        className="project__form"
+        onSubmit={addNewProject}
+        autoComplete="off"
+      >
+        <label className="project__label" htmlFor="project-name">
+          New project
+        </label>
         <input
+          className="project__input"
           id="project-name"
           value={projectName}
           type="text"

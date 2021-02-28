@@ -12,10 +12,14 @@ function TableView() {
   };
   return (
     <div>
-      <h3>
-        Hello <span>{userData.username || "Anonymous"}</span>
-      </h3>
-      <button onClick={logout}>Logout</button>
+      <div className="board-nav">
+        <h3>
+          Hello <span>{userData.username || "Anonymous"}</span>
+        </h3>
+        <button className="deleteBtn" onClick={logout}>
+          Logout
+        </button>
+      </div>
       <div>
         <h2>This is your projects:</h2>
         <NewProjectBtn userId={user.uid} />

@@ -17,12 +17,29 @@
   text-decoration: none;
   text-shadow: 0px 1px 0px #b23e35;
   // @include flexCenter;
+  &:hover {
+    background: linear-gradient(to bottom, #e4685d 5%, #fc8d83 100%);
+    background-color: #e4685d;
+  }
+  &:active {
+    position: relative;
+    top: 1px;
+  }
 }
-.deleteBtn:hover {
-  background: linear-gradient(to bottom, #e4685d 5%, #fc8d83 100%);
-  background-color: #e4685d;
-}
-.deleteBtn:active {
-  position: relative;
-  top: 1px;
-}
+
+// .optionBtn {
+//   color: #20bf6b;
+//   text-transform: uppercase;
+//   background: #ffffff;
+//   padding: 5px;
+//   border: 2px solid #20bf6b;
+//   border-radius: 6px;
+//   display: inline-block;
+//   transition: all 0.3s ease 0s;
+//   &:hover {
+//     color: #494949;
+//     border-radius: 50px;
+//     border-color: #494949;
+//     transition: all 0.3s ease 0s;
+//   }
+// }

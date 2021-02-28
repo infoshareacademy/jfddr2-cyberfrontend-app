@@ -67,11 +67,15 @@ export const NewAgeProject = () => {
   };
 
   return (
-    <div>
-      <h1>{project.projectName}</h1>
-      <form onSubmit={addColumn} autoComplete="off">
-        <label htmlFor="column-name">Add new column</label>
+    <div className="project">
+      <h1 className="project__title">{project.projectName}</h1>
+      <form className="project__form" onSubmit={addColumn} autoComplete="off">
+        <label className="project__label" htmlFor="column-name">
+          Add New List
+        </label>
         <input
+          placeholder="New List..."
+          className="project__input"
           id="column-name"
           value={columnName}
           type="text"
@@ -81,7 +85,7 @@ export const NewAgeProject = () => {
       {columns &&
         columns.map((column) => {
           return (
-            <div className="accordion" key={column.id}>
+            <div className="list" key={column.id}>
               <Column
                 // key={column.id}
                 project={project}
