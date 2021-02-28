@@ -16,7 +16,7 @@ export const Column = ({ column, project, allColumns }) => {
   const { user } = useUser();
   const [tasks, setTasks] = useState(null);
   const [taskName, setTaskName] = useState("");
-  // const [select, setSelect] = useState("");
+  const [expandedTaskId, setExpandedTaskId] = useState("");
 
   const userUid = user.uid;
   const projectId = project.id;
@@ -111,41 +111,49 @@ export const Column = ({ column, project, allColumns }) => {
             tasks.map((task) => {
               return (
                 <li key={task.id}>
-                  <h6>{task.taskName}</h6>
-                  {/* {allColumns.map((column) => {
-                    return (
+                  <h6>
+                    {task.taskName}
+                    <button
+                      onClick={() =>
+                        setExpandedTaskId((existingTaskId) => {
+                          if (existingTaskId === task.id) {
+                            return null;
+                          }
+                          return task.id;
+                        })
+                      }
+                    >
+                      ...
+                    </button>
+                  </h6>
+                  {expandedTaskId === task.id && (
+                    <>
+                      <span>Move to:</span>
+                      <select
+                        onChange={(event) => {
+                          moveTask(task, event.target.value);
+                          // setSelect(event.target.value);
+                        }}
+                        value={columnId}
+                      >
+                        {allColumns.map((column) => (
+                          <option
+                            disabled={column.id === columnId}
+                            key={column.id}
+                            value={column.id}
+                          >
+                            {column.columnName}
+                          </option>
+                        ))}
+                      </select>
                       <button
-                        key={column.id}
-                        disabled={column.id === columnId}
-                        onClick={() => moveTask(task, column.id)}
+                        className="deleteBtn"
+                        onClick={() => deleteTask(task)}
                       >
-                        {column.columnName}
+                        ❌
                       </button>
-                    );
-                  })} */}
-                  <span>Move to:</span>
-                  <select
-                    onChange={(event) => {
-                      moveTask(task, event.target.value);
-                      // setSelect(event.target.value);
-                    }}
-                  >
-                    {allColumns.map((column) => (
-                      <option
-                        disabled={column.id === columnId}
-                        key={column.id}
-                        value={column.id}
-                      >
-                        {column.columnName}
-                      </option>
-                    ))}
-                  </select>
-                  <button
-                    className="deleteBtn"
-                    onClick={() => deleteTask(task)}
-                  >
-                    ❌
-                  </button>
+                    </>
+                  )}
                 </li>
               );
             })}

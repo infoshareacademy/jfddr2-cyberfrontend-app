@@ -20,11 +20,11 @@ export const NewAgeProject = () => {
       .collection(`users/${userUid}/projects`)
       .doc(projectId);
 
-    docRef.onSnapshot((project) => {
+    const unsubscribe = docRef.onSnapshot((project) => {
       setProject({ id: project.id, ...project.data() });
     });
 
-    docRef.collection("columns").onSnapshot((snapshot) => {
+    const unsubscribe2 = docRef.collection("columns").onSnapshot((snapshot) => {
       const columns = [];
 
       snapshot.forEach((column) => {
@@ -33,6 +33,14 @@ export const NewAgeProject = () => {
 
       setColumns(columns);
     });
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+      if (unsubscribe2) {
+        unsubscribe2();
+      }
+    };
   }, [projectId, userUid]);
 
   if (project === null) {
@@ -41,31 +49,21 @@ export const NewAgeProject = () => {
 
   const addColumn = (e) => {
     e.preventDefault();
-    const unsubscribe = firebase
+    firebase
       .firestore()
       .collection(`users/${userUid}/projects/${projectId}/columns`)
       .add({
         columnName: columnName,
       })
       .then(() => setColumnName(""));
-    return () => {
-      if (unsubscribe) {
-        unsubscribe();
-      }
-    };
   };
 
   const deleteColumn = (column) => {
-    const unsubscribe = firebase
+    firebase
       .firestore()
       .collection(`users/${userUid}/projects/${projectId}/columns`)
       .doc(column.id)
       .delete();
-    return () => {
-      if (unsubscribe) {
-        unsubscribe();
-      }
-    };
   };
 
   return (
