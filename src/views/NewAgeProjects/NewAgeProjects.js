@@ -73,12 +73,14 @@ export const NewAgeProjects = () => {
           {expandedProjectId === project.id &&
             ReactDOM.createPortal(
               <>
-                <button
-                  className="deleteBtn"
-                  onClick={() => deleteProject(project)}
-                >
-                  ❌
-                </button>
+                <div className="selectContainer">
+                  <button
+                    className="deleteBtn"
+                    onClick={() => deleteProject(project)}
+                  >
+                    ❌
+                  </button>
+                </div>
               </>,
               document.getElementById("overlay")
             )}

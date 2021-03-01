@@ -1,8 +1,19 @@
 @import "_projectsView.scss";
 
+#root {
+  background-color: #fff;
+  @include positionCenter;
+  height: 640px;
+  width: 320px;
+}
+
 #overlay {
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.effiLogo {
+  @include positionCenter;
 }
