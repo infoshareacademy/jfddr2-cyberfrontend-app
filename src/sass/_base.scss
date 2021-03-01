@@ -1,7 +1,8 @@
 @import "_mixins.scss";
-
+@import "_colors.scss";
 body {
   font-family: "Montserrat", sans-serif;
+  background-color: $dark;
 }
 
 // #root {
