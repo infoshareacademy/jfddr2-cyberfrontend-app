@@ -54,6 +54,7 @@ export const NewAgeProject = () => {
       .collection(`users/${userUid}/projects/${projectId}/columns`)
       .add({
         columnName: columnName,
+        createdAt: Date.now(),
       })
       .then(() => setColumnName(""));
   };

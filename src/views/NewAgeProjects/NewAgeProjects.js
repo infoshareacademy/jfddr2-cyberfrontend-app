@@ -25,7 +25,6 @@ export const NewAgeProjects = () => {
         snapshot.forEach((project) => {
           projects.push({ id: project.id, ...project.data() });
         });
-
         setProjects(projects);
       });
 

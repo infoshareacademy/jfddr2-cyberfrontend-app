@@ -27,6 +27,7 @@ const RegisterValue = (callback, validate) => {
       .auth()
       .createUserWithEmailAndPassword(values.email, values.password)
       .then((cred) => {
+        console.log("testowy log", cred);
         firebase.firestore().collection("users").doc(cred.user.uid).set({
           username: values.username,
           email: values.email,
@@ -34,6 +35,7 @@ const RegisterValue = (callback, validate) => {
         return cred;
       })
       .then((cred) => {
+        console.log(cred);
         firebase
           .firestore()
           .collection(`users/${cred.user.uid}/projects`)
@@ -41,25 +43,30 @@ const RegisterValue = (callback, validate) => {
             projectName: "Starter project",
             archive: false,
             favourite: false,
+            createdAt: Date.now(),
           })
           .then((ref) => {
             ref
               .collection("columns")
               .add({
                 columnName: "Todo",
+                createdAt: Date.now(),
               })
               .then((ref) => {
                 ref.collection("tasks").add({
                   taskName: "Be awesome",
+                  createdAt: Date.now(),
                 });
               });
 
             ref.collection("columns").add({
               columnName: "In Progress",
+              createdAt: Date.now(),
             });
 
             ref.collection("columns").add({
               columnName: "Done",
+              createdAt: Date.now(),
             });
           });
       });

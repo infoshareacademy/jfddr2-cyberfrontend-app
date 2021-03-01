@@ -16,7 +16,8 @@ function NewProjectBtn({ board, userId }) {
         projectName: projectName.trim(),
         archive: false,
         favourite: false,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        createdAt: Date.now(),
       })
       .then((ref) => {
         setProjectName("");
@@ -25,19 +26,23 @@ function NewProjectBtn({ board, userId }) {
           .collection("columns")
           .add({
             columnName: "Todo",
+            createdAt: Date.now(),
           })
           .then((ref) => {
             ref.collection("tasks").add({
               taskName: "Be awesome",
+              createdAt: Date.now(),
             });
           });
 
         ref.collection("columns").add({
           columnName: "In Progress",
+          createdAt: Date.now(),
         });
 
         ref.collection("columns").add({
           columnName: "Done",
+          createdAt: Date.now(),
         });
       });
   };

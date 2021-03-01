@@ -50,7 +50,7 @@ export const Column = ({ column, project, allColumns }) => {
       )
       .add({
         taskName: taskName,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        createdAt: Date.now(),
       })
       .then(() => setTaskName(""));
   };
