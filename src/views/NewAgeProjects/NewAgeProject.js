@@ -69,7 +69,9 @@ export const NewAgeProject = () => {
 
   return (
     <div className="project">
-      <h1 className="project__title">{project.projectName}</h1>
+      <div className="project__title--wrapper">
+        <h1 className="project__title">{project.projectName}</h1>
+      </div>
       <form className="project__form" onSubmit={addColumn} autoComplete="off">
         <label className="project__label" htmlFor="column-name">
           Add New List

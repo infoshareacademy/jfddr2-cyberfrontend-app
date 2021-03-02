@@ -143,7 +143,6 @@ export const Column = ({ column, project, allColumns }) => {
                             className="selectContainer__select"
                             onChange={(event) => {
                               moveTask(task, event.target.value);
-                              // setSelect(event.target.value);
                             }}
                             value={columnId}
                           >

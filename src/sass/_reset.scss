@@ -1,3 +1,5 @@
+@import "_colors.scss";
+
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -37,4 +39,14 @@ img {
 a,
 Link {
   text-decoration: none;
+  color: $dark; /* Unvisited link  */
+  &:visited {
+    color: $dark;
+  } /* Visited link    */
+  &:hover {
+    color: $light;
+  } /* Mouse over link */
+  &:active {
+    color: $medium;
+  } /* Selected link   */
 }

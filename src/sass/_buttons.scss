@@ -1,4 +1,6 @@
 @import "_mixins.scss";
+@import "_colors.scss";
+@import "_fonts.scss";
 
 .deleteBtn {
   box-shadow: inset 0px 1px 0px 0px #f7c5c0;
@@ -27,22 +29,22 @@
   }
 }
 
-// .optionBtn {
-//   color: #20bf6b;
-//   text-transform: uppercase;
-//   background: #ffffff;
-//   padding: 5px;
-//   border: 2px solid #20bf6b;
-//   border-radius: 6px;
-//   display: inline-block;
-//   transition: all 0.3s ease 0s;
-//   &:hover {
-//     color: #494949;
-//     border-radius: 50px;
-//     border-color: #494949;
-//     transition: all 0.3s ease 0s;
-//   }
-// }
+.optionBtn {
+  color: $dark;
+  text-transform: uppercase;
+  background: $light;
+  padding: 5px;
+  border: 2px solid $dark;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  &:hover {
+    color: $medium;
+    border-radius: 50px;
+    border-color: $dark;
+    transition: all 0.3s ease 0s;
+  }
+}
 
 // login register buttons
 

@@ -14,7 +14,7 @@ function TableView() {
     <div>
       <div className="board-nav">
         <h3>
-          Hello <span>{userData.username || "Anonymous"}</span>
+          Hello <span>{user.username || "Anonymous"}</span>
         </h3>
         <button className="deleteBtn" onClick={logout}>
           Logout
