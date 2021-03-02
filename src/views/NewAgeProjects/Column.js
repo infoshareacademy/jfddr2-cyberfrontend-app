@@ -97,6 +97,7 @@ export const Column = ({ column, project, allColumns }) => {
         className="list-select"
         checked
         readOnly
+        required
       />
       <div className="list-title">
         <span>{column.columnName}</span>
@@ -111,6 +112,10 @@ export const Column = ({ column, project, allColumns }) => {
             value={taskName}
             type="text"
             onChange={(e) => setTaskName(e.target.value)}
+            required
+            pattern="^[^\s]+(\s+[^\s]+)*$"
+            title="Give a nice and.. normal title 😉"
+            placeholder="New Task..."
           />
         </form>
         <ul>

@@ -77,6 +77,9 @@ export const NewAgeProject = () => {
           Add New List
         </label>
         <input
+          required
+          pattern="^[^\s]+(\s+[^\s]+)*$"
+          title="Give a nice and.. normal title 😉"
           placeholder="New List..."
           className="project__input"
           id="column-name"

@@ -57,6 +57,9 @@ function NewProjectBtn({ board, userId }) {
           New project
         </label>
         <input
+          required
+          pattern="^[^\s]+(\s+[^\s]+)*$"
+          title="Give a nice and.. normal title 😉"
           className="project__input"
           id="project-name"
           value={projectName}
