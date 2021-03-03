@@ -1,15 +1,15 @@
-import { useUser } from "../../contexts/UserContext";
-import { useState, useEffect } from "react";
-import firebase from "firebase";
-import { Link } from "react-router-dom";
-import ReactDOM from "react-dom";
+import { useUser } from '../../contexts/UserContext';
+import { useState, useEffect } from 'react';
+import firebase from 'firebase';
+import { Link } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
-import "../../sass/main.scss";
+import '../../sass/main.scss';
 
 export const NewAgeProjects = () => {
   const { user } = useUser();
   const [projects, setProjects] = useState(null);
-  const [expandedProjectId, setExpandedProjectId] = useState("");
+  const [expandedProjectId, setExpandedProjectId] = useState('');
 
   const userUid = user.uid;
 
@@ -17,7 +17,7 @@ export const NewAgeProjects = () => {
     const unsubscribe = firebase
       .firestore()
       .collection(`users/${userUid}/projects`)
-      .orderBy("createdAt", "desc")
+      .orderBy('createdAt', 'desc')
 
       .onSnapshot((snapshot) => {
         const projects = [];
@@ -52,12 +52,12 @@ export const NewAgeProjects = () => {
     projects &&
     projects.map((project) => {
       return (
-        <div className="single-project single-row" key={project.id}>
+        <div className='single-project single-row' key={project.id}>
           <Link to={`/board/project/${project.id}`}>
             <div>{project.projectName}</div>
           </Link>
           <button
-            className="single-project__option optionBtn"
+            className='single-project__option optionBtn'
             onClick={() =>
               setExpandedProjectId((existingProjectId) => {
                 if (existingProjectId === project.id) {
@@ -72,16 +72,16 @@ export const NewAgeProjects = () => {
           {expandedProjectId === project.id &&
             ReactDOM.createPortal(
               <>
-                <div className="selectContainer">
+                <div className='selectContainer'>
                   <button
-                    className="deleteBtn"
+                    className='deleteBtn'
                     onClick={() => deleteProject(project)}
                   >
                     ❌
                   </button>
                 </div>
               </>,
-              document.getElementById("overlay")
+              document.getElementById('overlay')
             )}
         </div>
       );

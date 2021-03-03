@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useUser } from "../../contexts/UserContext";
-import firebase from "firebase";
-import { Column } from "./Column";
-import "../../sass/main.scss";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useUser } from '../../contexts/UserContext';
+import firebase from 'firebase';
+import { Column } from './Column';
+import '../../sass/main.scss';
 
 export const NewAgeProject = () => {
   const { projectId } = useParams();
   const { user } = useUser();
   const [project, setProject] = useState(null);
   const [columns, setColumns] = useState(null);
-  const [columnName, setColumnName] = useState("");
+  const [columnName, setColumnName] = useState('');
 
   const userUid = user.uid;
 
@@ -24,7 +24,7 @@ export const NewAgeProject = () => {
       setProject({ id: project.id, ...project.data() });
     });
 
-    const unsubscribe2 = docRef.collection("columns").onSnapshot((snapshot) => {
+    const unsubscribe2 = docRef.collection('columns').onSnapshot((snapshot) => {
       const columns = [];
 
       snapshot.forEach((column) => {
@@ -56,7 +56,7 @@ export const NewAgeProject = () => {
         columnName: columnName,
         createdAt: Date.now(),
       })
-      .then(() => setColumnName(""));
+      .then(() => setColumnName(''));
   };
 
   const deleteColumn = (column) => {
@@ -68,30 +68,30 @@ export const NewAgeProject = () => {
   };
 
   return (
-    <div className="project">
-      <div className="project__title--wrapper">
-        <h1 className="project__title">{project.projectName}</h1>
+    <div className='project'>
+      <div className='project__title--wrapper'>
+        <h1 className='project__title'>{project.projectName}</h1>
       </div>
-      <form className="project__form" onSubmit={addColumn} autoComplete="off">
-        <label className="project__label" htmlFor="column-name">
+      <form className='project__form' onSubmit={addColumn} autoComplete='off'>
+        <label className='project__label' htmlFor='column-name'>
           Add New List
         </label>
         <input
           required
-          pattern="^[^\s]+(\s+[^\s]+)*$"
-          title="Give a nice and.. normal title 😉"
-          placeholder="New List..."
-          className="project__input"
-          id="column-name"
+          pattern='^[^\s]+(\s+[^\s]+)*$'
+          title='Give a nice and.. normal title 😉'
+          placeholder='New List...'
+          className='project__input'
+          id='column-name'
           value={columnName}
-          type="text"
+          type='text'
           onChange={(e) => setColumnName(e.target.value)}
         />
       </form>
       {columns &&
         columns.map((column) => {
           return (
-            <div className="list" key={column.id}>
+            <div className='list' key={column.id}>
               <Column
                 // key={column.id}
                 project={project}
@@ -99,7 +99,7 @@ export const NewAgeProject = () => {
                 allColumns={columns}
               />
               <button
-                className="deleteBtn"
+                className='deleteBtn'
                 onClick={() => deleteColumn(column)}
               >
                 ❌
