@@ -1,0 +1,133 @@
+@import "_buttons.scss";
+@import "_mixins.scss";
+@import "_colors.scss";
+
+.homeView {
+  @include flexCenter;
+  .homeView__background {
+    // height: 100vh;       na prawdziwy mobile
+    // width: 100vw;
+    height: 640px;
+    width: 320px;
+    // background-image: url("../img/LogoMakr-1dCNrf.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 40%;
+    filter: blur(5px) grayscale(80%);
+    z-index: -1;
+  }
+  .homeView__title {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 0.95rem;
+    color: rgb(39, 39, 39);
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.effi {
+  font-family: "Leckerli One", cursive;
+  font-size: 2rem;
+}
+
+.board-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+}
+
+.selectContainer {
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $medium;
+  border-top: 2px solid $dark;
+}
+
+.selectContainer__select {
+  background-color: $dark;
+  width: 60%;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: $dark;
+
+  // background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+
+.selectContainer__select {
+  margin: 50px;
+  width: 150px;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(../img/icons/swap-vertical-bold.png) 96% / 15% no-repeat
+    $light;
+}
+
+.project {
+  .project__title {
+    margin-bottom: 15px;
+    padding-left: 20px;
+  }
+  .project__form,
+  .task__form {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-around;
+    .project__label,
+    .task__label {
+      padding-right: 5px;
+    }
+    .project__input,
+    .task__input {
+    }
+  }
+}
+
+.singleproject {
+  &__link {
+    width: 80vw;
+  }
+}
+
+.single-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 3px 5px;
+}
+
+li {
+  margin: 3px 5px;
+  .list-row {
+    display: flex;
+    justify-content: space-between;
+    // .optionBtn {
+    //   position: absolute;
+    //   right: 5px;
+    // }
+  }
+}
+
+input {
+  background-color: $bgColor;
+  outline: none;
+  outline-style: none;
+  border: none;
+  border-bottom: 1px solid $dark;
+}

@@ -1,62 +1,72 @@
-import "./NewProjectBtn.css";
-import firebase from "firebase/app";
-import "firebase/firestore";
-import { useState, useEffect, useRef } from "react";
+import './NewProjectBtn.css';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import { useState } from 'react';
+import '../../sass/main.scss';
 
 function NewProjectBtn({ board, userId }) {
-  const [projectName, setProjectName] = useState("");
-  const [currentProjectContent, setCurrentProjectContent] = useState({});
-  const inputRef = useRef();
-  useEffect(() => {
-    if (!board || Object.keys(board).length === 0) {
-      return <div>Loading...</div>;
-    } else {
-      const projectsOfUser = board;
-      setCurrentProjectContent(projectsOfUser);
-    }
-  }, [currentProjectContent]);
-  const addNewProject = () => {
-    const timeStamp = Date.now();
-    const projectId = "project" + timeStamp;
-    const columnId = "column" + timeStamp;
+  const [projectName, setProjectName] = useState('');
 
-    if (!projectName || !projectName.trim()) {
-      return;
-    } else {
-      firebase
-        .firestore()
-        .collection("users")
-        .doc(userId)
-        .update({
-          board: {
-            ...board,
-            [projectId]: {
-              projectName: projectName.trim(),
-              projectContent: {
-                columnId: { columnContent: {}, columnName: "Todo", columnId },
-              },
-              archive: false,
-              favourite: false,
-              projectId,
-            },
-          },
+  const addNewProject = (event) => {
+    event.preventDefault();
+    firebase
+      .firestore()
+      .collection(`users/${userId}/projects`)
+      .add({
+        projectName: projectName.trim(),
+        archive: false,
+        favourite: false,
+        // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        createdAt: Date.now(),
+      })
+      .then((ref) => {
+        setProjectName('');
+
+        ref
+          .collection('columns')
+          .add({
+            columnName: 'Todo',
+            createdAt: Date.now(),
+          })
+          .then((ref) => {
+            ref.collection('tasks').add({
+              taskName: 'Be awesome',
+              createdAt: Date.now(),
+            });
+          });
+
+        ref.collection('columns').add({
+          columnName: 'In Progress',
+          createdAt: Date.now(),
         });
-      inputRef.current.value = "";
-    }
+
+        ref.collection('columns').add({
+          columnName: 'Done',
+          createdAt: Date.now(),
+        });
+      });
   };
   return (
     <div>
-      <button onClick={addNewProject}>NEW project</button>
-      <input
-        ref={inputRef}
-        type="text"
-        onChange={(e) => setProjectName(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            addNewProject();
-          }
-        }}
-      />
+      <form
+        className='project__form'
+        onSubmit={addNewProject}
+        autoComplete='off'
+      >
+        <label className='project__label' htmlFor='project-name'>
+          New project
+        </label>
+        <input
+          required
+          pattern='^[^\s]+(\s+[^\s]+)*$'
+          title='Give a nice and.. normal title 😉'
+          className='project__input'
+          id='project-name'
+          value={projectName}
+          type='text'
+          onChange={(e) => setProjectName(e.target.value)}
+        />
+      </form>
     </div>
   );
 }

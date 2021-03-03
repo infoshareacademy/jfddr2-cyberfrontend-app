@@ -1,56 +1,35 @@
-import { firebaseConfig } from "../src/firebase/firebaseConfig";
-import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
 import "./index-reset.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ProjectView from "./views/ProjectView/ProjectView";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import TableView from "./views/TableView/TableView";
 import Nav from "./views/Nav/Nav";
-import { useEffect, useState } from "react";
-import LandingView from "./views/LandingPage/LandingPage";
-firebase.initializeApp(firebaseConfig);
+import { AuthGuard } from "./views/AuthGuard/AuthGuard";
+import { NewAgeProject } from "./views/NewAgeProjects/NewAgeProject";
+// import { NewAgeProjects } from "./views/NewAgeProjects/NewAgeProjects";
+import HomeView from "./views/LandingPage/HomeView";
+
+import LandingPage from "./views/LandingPage/LandingPage";
+import "./sass/main.scss";
 
 const App = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    firebase
-      .firestore()
-      .collection("users")
-      .onSnapshot((snapshot) => {
-        const users = snapshot.docs.map((user) => {
-          return {
-            ...user.data(),
-            id: user.id,
-          };
-        });
-        setData(users);
-      });
-  }, []);
-  console.log(data);
   return (
     <Router>
-      <Nav />
-      <Switch>
-        <Route path="/board/:projectName">
-          <ProjectView
-            board={data.length !== 0 ? data.board : []}
-            setData={setData}
-            userId={data.length !== 0 ? data.id : ""}
-          />
-        </Route>
-        <Route path="/board">
-          <TableView
-            board={data.length !== 0 ? data.board : []}
-            setData={setData}
-            userId={data.length !== 0 ? data.id : ""}
-          />
-        </Route>
-        <Route path="/">
-          <LandingView data={data} setData={setData} />
-        </Route>
-      </Switch>
+      <AuthGuard cover={<LandingPage />}>
+        <Switch>
+          <Route path="/board/project/:projectId">
+            <Nav />
+            <NewAgeProject />
+          </Route>
+          <Route path="/board/">
+            <Nav />
+            <TableView />
+          </Route>
+          <Route exact path="/">
+            <Link to="/board">
+              <HomeView />
+            </Link>
+          </Route>
+        </Switch>
+      </AuthGuard>
     </Router>
   );
 };
