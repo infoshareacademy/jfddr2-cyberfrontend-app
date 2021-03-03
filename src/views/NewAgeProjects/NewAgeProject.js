@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
-import firebase from 'firebase';
+import firebase from '../../firebase/firebaseConfig';
 import { Column } from './Column';
 import '../../sass/main.scss';
 

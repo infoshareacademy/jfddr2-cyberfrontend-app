@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import firebase from 'firebase';
+import firebase from '../../../firebase/firebaseConfig';
 
 const RegisterValue = (callback, validate) => {
   const [values, setValues] = useState({

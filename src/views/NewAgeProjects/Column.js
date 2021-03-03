@@ -1,7 +1,7 @@
 import { useUser } from '../../contexts/UserContext';
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import firebase from 'firebase';
+import firebase from '../../firebase/firebaseConfig';
 import '../../sass/main.scss';
 
 const snapshotToArrayWithId = (snapshot) => {

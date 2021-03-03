@@ -1,6 +1,6 @@
 import { useUser } from '../../contexts/UserContext';
 import { useState, useEffect } from 'react';
-import firebase from 'firebase';
+import firebase from '../../firebase/firebaseConfig';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 
