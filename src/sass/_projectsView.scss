@@ -1,10 +1,10 @@
-@import "_colors.scss";
-@import "_fonts.scss";
+@import '_colors.scss';
+@import '_fonts.scss';
 
 .list {
   box-sizing: border-box;
   display: flex;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   overflow: hidden;
   width: 100%;
   &-select {
@@ -18,7 +18,7 @@
     &:not(:nth-last-child(2))::after {
       border: 1px solid transparent;
       bottom: 0;
-      content: "";
+      content: '';
       left: 0;
       position: absolute;
       right: 0;
@@ -96,7 +96,9 @@
   }
   &-select:hover + &-title,
   &-select:checked + &-title {
+    font-size: 1.8rem;
     background-color: $medium;
+    color: $bgColor;
   }
 }
 

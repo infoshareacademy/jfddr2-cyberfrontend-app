@@ -21,7 +21,7 @@ function TableView() {
         </button>
       </div>
       <div>
-        <h2>This is your projects:</h2>
+        <h2>Your projects:</h2>
         <NewProjectBtn userId={user.uid} />
         <NewAgeProjects />
       </div>
