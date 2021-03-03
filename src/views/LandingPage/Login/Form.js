@@ -1,11 +1,11 @@
-
 import LoginValue from "./LoginValue";
 
-const Form = ({ setData, data }) => {
-
-    return (
-        <div>
-            <LoginValue data={data} setData={setData} /></div>)
-}
+const Form = () => {
+  return (
+    <div>
+      <LoginValue />
+    </div>
+  );
+};
 
 export default Form;
