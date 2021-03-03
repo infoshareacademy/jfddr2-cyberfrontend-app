@@ -1,4 +1,4 @@
-@import "_projectsView.scss";
+@import '_projectsView.scss';
 
 // #root {
 //   background-color: #fff;
@@ -6,17 +6,3 @@
 //   height: 640px;
 //   width: 320px;
 // }
-
-#overlay {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.effiLogo {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translate(-50%);
-}

@@ -4,6 +4,7 @@ import { useUser } from '../../contexts/UserContext';
 import firebase from '../../firebase/firebaseConfig';
 import { Column } from './Column';
 import '../../sass/main.scss';
+import { ProjectProvider } from '../../contexts/ProjectContext';
 
 export const NewAgeProject = () => {
   const { projectId } = useParams();
@@ -88,25 +89,22 @@ export const NewAgeProject = () => {
           onChange={(e) => setColumnName(e.target.value)}
         />
       </form>
-      {columns &&
-        columns.map((column) => {
-          return (
-            <div className='list' key={column.id}>
-              <Column
-                // key={column.id}
-                project={project}
-                column={column}
-                allColumns={columns}
-              />
-              <button
-                className='deleteBtn'
-                onClick={() => deleteColumn(column)}
-              >
-                ❌
-              </button>
-            </div>
-          );
-        })}
+      <ProjectProvider>
+        {columns &&
+          columns.map((column, index) => {
+            return (
+              <div className='list' key={column.id}>
+                <Column
+                  columnIndex={index}
+                  project={project}
+                  column={column}
+                  allColumns={columns}
+                  deleteColumn={deleteColumn}
+                />
+              </div>
+            );
+          })}
+      </ProjectProvider>
     </div>
   );
 };

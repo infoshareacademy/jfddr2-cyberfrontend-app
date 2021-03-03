@@ -1,6 +1,27 @@
-@import "_mixins.scss";
-@import "_colors.scss";
+@import '_mixins.scss';
+@import '_colors.scss';
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: $bgColor;
+  max-width: 360px;
+  @include positionCenter;
+}
+
+// #root {
+//   width: 360px;
+//   height: 560px;
+//   overflow: scroll;
+//   border-top: 40px solid black;
+//   border-bottom: 40px solid black;
+//   border-left: 5px solid black;
+//   border-right: 5px solid black;
+//   border-top-left-radius: 20px;
+//   border-top-right-radius: 20px;
+//   border-bottom-left-radius: 20px;
+//   border-bottom-right-radius: 20px;
+// }
+
+#overlay {
+  position: fixed;
+  bottom: 0px;
 }
