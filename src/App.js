@@ -1,4 +1,3 @@
-import './index-reset.css';
 import { HashRouter, Switch, Route, Link } from 'react-router-dom';
 import TableView from './views/TableView/TableView';
 import Nav from './views/Nav/Nav';
