@@ -3,6 +3,7 @@ import './NewProjectBtn.css';
 import { useUser } from '../../contexts/UserContext';
 import { NewAgeProjects } from '../NewAgeProjects/NewAgeProjects';
 import firebase from '../../firebase/firebaseConfig';
+import SvgLogout from '../buttons/Logout';
 
 function TableView() {
   const { user, userData } = useUser();
@@ -13,16 +14,17 @@ function TableView() {
   return (
     <div>
       <div className='board-nav'>
-        <h3>
-          Hello <span>{userData.username || 'Anonymous'}</span>
-        </h3>
-        <button className='deleteBtn' onClick={logout}>
-          Logout
+        <h3>Hello</h3>
+        <span className='board__userName'>
+          {userData.username || 'Anonymous'}
+        </span>
+        <button className='logoutBtn' onClick={logout}>
+          <SvgLogout />
         </button>
       </div>
-      <div>
-        <h2>Your projects:</h2>
+      <div className='projectsContaniner'>
         <NewProjectBtn userId={user.uid} />
+        <h2 className='projectsContaniner__title'>Your projects:</h2>
         <NewAgeProjects />
       </div>
     </div>

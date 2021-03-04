@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import firebase from '../../firebase/firebaseConfig';
 import '../../sass/main.scss';
 import { useProject } from '../../contexts/ProjectContext';
+import SvgSettings from '../buttons/Settings';
+import SvgDelete from '../buttons/Delete';
 
 const snapshotToArrayWithId = (snapshot) => {
   const items = [];
@@ -116,9 +118,9 @@ export const Column = ({
       {expandedColumnIndex === columnIndex && (
         <div className='list-content task'>
           <form className='task__form' onSubmit={addTask} autoComplete='off'>
-            <label className='task__label' htmlFor='task-name'>
+            {/* <label className='task__label' htmlFor='task-name'>
               New task
-            </label>
+            </label> */}
             <input
               className='task__input'
               value={taskName}
@@ -148,7 +150,7 @@ export const Column = ({
                           })
                         }
                       >
-                        ...
+                        <SvgSettings />
                       </button>
                     </div>
                     {expandedTaskId === task.id &&
@@ -177,7 +179,7 @@ export const Column = ({
                               className='deleteBtn'
                               onClick={() => deleteTask(task)}
                             >
-                              ❌
+                              <SvgDelete />
                             </button>
                           </div>
                         </>,
@@ -187,8 +189,11 @@ export const Column = ({
                 );
               })}
           </ul>
-          <button className='deleteBtn' onClick={() => deleteColumn(column)}>
-            ❌
+          <button
+            className='deleteBtn columnDelete'
+            onClick={() => deleteColumn(column)}
+          >
+            <SvgDelete />
           </button>
         </div>
       )}

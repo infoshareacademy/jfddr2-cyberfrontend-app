@@ -1,91 +1,63 @@
-@import "_mixins.scss";
-@import "_colors.scss";
-@import "_fonts.scss";
+@import '_mixins.scss';
+@import '_colors.scss';
+@import '_fonts.scss';
 
 .deleteBtn {
-  box-shadow: inset 0px 1px 0px 0px #f7c5c0;
-  background: linear-gradient(to bottom, #fc8d83 5%, #e4685d 100%);
-  background-color: #fc8d83;
-  border-radius: 6px;
-  border: 1px solid #d83526;
-  display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  // padding: 6px 12px;
-  padding: 0;
+  border: none;
+  outline: none;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #b23e35;
-  // @include flexCenter;
-  &:hover {
-    background: linear-gradient(to bottom, #e4685d 5%, #fc8d83 100%);
-    background-color: #e4685d;
-  }
-  &:active {
-    position: relative;
-    top: 1px;
-  }
-}
-
-.optionBtn {
-  color: $dark;
-  text-transform: uppercase;
-  background: $light;
-  padding: 5px;
-  border: 2px solid $dark;
-  border-radius: 6px;
-  display: inline-block;
-  transition: all 0.3s ease 0s;
+  background: none;
+  color: #ffffff;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
   &:hover {
     color: $medium;
-    border-radius: 50px;
-    border-color: $dark;
     transition: all 0.3s ease 0s;
   }
 }
 
-// login register buttons
+.columnDelete {
+  padding-top: 5px;
+  background-color: $highlight;
+  width: 100%;
+}
 
-// .btn-hover {
-//   width: 200px;
-//   font-size: 16px;
-//   font-weight: 600;
-//   color: #fff;
-//   cursor: pointer;
-//   margin: 20px;
-//   height: 55px;
-//   text-align: center;
-//   border: none;
-//   background-size: 300% 100%;
+.logoutBtn {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background: none;
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
 
-//   border-radius: 50px;
-//   moz-transition: all 0.4s ease-in-out;
-//   -o-transition: all 0.4s ease-in-out;
-//   -webkit-transition: all 0.4s ease-in-out;
-//   transition: all 0.4s ease-in-out;
-// }
+  &:hover,
+  &:focus {
+    color: $medium;
+    transition: all 0.3s ease 0s;
+  }
+}
 
-// .btn-hover:hover {
-//   background-position: 100% 0;
-//   moz-transition: all 0.4s ease-in-out;
-//   -o-transition: all 0.4s ease-in-out;
-//   -webkit-transition: all 0.4s ease-in-out;
-//   transition: all 0.4s ease-in-out;
-// }
+.optionBtn {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
 
-// .btn-hover:focus {
-//   outline: none;
-// }
-
-// .btn-hover.login {
-//   background-image: linear-gradient(
-//     to right,
-//     #29323c,
-//     #485563,
-//     #2b5876,
-//     #4e4376
-//   );
-//   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
-// }
+  &:hover,
+  &:focus {
+    color: $medium;
+    transition: all 0.3s ease 0s;
+  }
+}

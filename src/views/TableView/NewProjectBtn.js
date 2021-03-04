@@ -46,16 +46,17 @@ function NewProjectBtn({ board, userId }) {
       });
   };
   return (
-    <div>
+    <div className='newProjectBtn'>
       <form
         className='project__form'
         onSubmit={addNewProject}
         autoComplete='off'
       >
-        <label className='project__label' htmlFor='project-name'>
+        {/* <label className='project__label' htmlFor='project-name'>
           New project
-        </label>
+        </label> */}
         <input
+          placeholder='New Project'
           required
           pattern='^[^\s]+(\s+[^\s]+)*$'
           title='Give a nice and.. normal title 😉'
