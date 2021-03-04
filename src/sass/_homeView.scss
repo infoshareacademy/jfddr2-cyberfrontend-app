@@ -4,10 +4,10 @@
 .homeView {
   background-image: linear-gradient(
     -60deg,
-    #283e56 0%,
-    #1989ac 45%,
-    #970747 65%,
-    #fef4e8 80%
+    $medium 5%,
+    $light 45%,
+    $highlight 65%,
+    $bgColor 90%
   );
 
   @include flexCenter;
@@ -34,7 +34,7 @@
   }
   p:hover,
   h2:hover {
-    color: rgb(12, 2, 2);
+    color: rgb(8, 1, 1);
     transform: scale(1.2);
   }
 }
