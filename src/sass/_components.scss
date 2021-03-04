@@ -2,14 +2,22 @@
 @import "_mixins.scss";
 @import "_colors.scss";
 
+// widok przed zalogowaniem
+
+.effiLogo {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+// widok po zalogowaniu
+
 .homeView {
   @include flexCenter;
   .homeView__background {
-    // height: 100vh;       na prawdziwy mobile
-    // width: 100vw;
     height: 640px;
-    width: 320px;
-    // background-image: url("../img/LogoMakr-1dCNrf.png");
+    width: 360px;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -39,30 +47,37 @@
   justify-content: space-between;
   align-items: center;
   margin: 5px;
+  .board__userName {
+    font-size: 2.5rem;
+    padding-left: 10px;
+  }
+}
+
+.projectsContaniner {
+  .projectsContaniner__title {
+    padding: 0 0 10px 10px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.newProjectBtn {
+  @include flexCenter;
+  padding: 10px 0;
 }
 
 .selectContainer {
-  width: 100vw;
+  z-index: 999;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
   height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: $medium;
-  border-top: 2px solid $dark;
-}
-
-.selectContainer__select {
-  background-color: $dark;
-  width: 60%;
-  border: 1px solid var(--select-border);
-  border-radius: 0.25em;
-  padding: 0.25em 0.5em;
-  font-size: 1rem;
-  cursor: pointer;
-  line-height: 1.1;
-  background-color: $dark;
-
-  // background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  background: $highlight;
 }
 
 .selectContainer__select {
@@ -71,12 +86,14 @@
   padding: 5px 35px 5px 5px;
   font-size: 16px;
   border: 1px solid #ccc;
+  border-radius: 0.25em;
   height: 34px;
+  color: $medium;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: url(../img/icons/swap-vertical-bold.png) 96% / 15% no-repeat
-    $light;
+    $bgColor;
 }
 
 .project {

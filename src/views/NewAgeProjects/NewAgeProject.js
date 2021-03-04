@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
-import firebase from 'firebase';
+import firebase from '../../firebase/firebaseConfig';
 import { Column } from './Column';
 import '../../sass/main.scss';
+import { ProjectProvider } from '../../contexts/ProjectContext';
 
 export const NewAgeProject = () => {
   const { projectId } = useParams();
@@ -73,14 +74,14 @@ export const NewAgeProject = () => {
         <h1 className='project__title'>{project.projectName}</h1>
       </div>
       <form className='project__form' onSubmit={addColumn} autoComplete='off'>
-        <label className='project__label' htmlFor='column-name'>
+        {/* <label className='project__label' htmlFor='column-name'>
           Add New List
-        </label>
+        </label> */}
         <input
           required
           pattern='^[^\s]+(\s+[^\s]+)*$'
           title='Give a nice and.. normal title 😉'
-          placeholder='New List...'
+          placeholder='🖍 New List'
           className='project__input'
           id='column-name'
           value={columnName}
@@ -88,25 +89,22 @@ export const NewAgeProject = () => {
           onChange={(e) => setColumnName(e.target.value)}
         />
       </form>
-      {columns &&
-        columns.map((column) => {
-          return (
-            <div className='list' key={column.id}>
-              <Column
-                // key={column.id}
-                project={project}
-                column={column}
-                allColumns={columns}
-              />
-              <button
-                className='deleteBtn'
-                onClick={() => deleteColumn(column)}
-              >
-                ❌
-              </button>
-            </div>
-          );
-        })}
+      <ProjectProvider>
+        {columns &&
+          columns.map((column, index) => {
+            return (
+              <div className='list' key={column.id}>
+                <Column
+                  columnIndex={index}
+                  project={project}
+                  column={column}
+                  allColumns={columns}
+                  deleteColumn={deleteColumn}
+                />
+              </div>
+            );
+          })}
+      </ProjectProvider>
     </div>
   );
 };

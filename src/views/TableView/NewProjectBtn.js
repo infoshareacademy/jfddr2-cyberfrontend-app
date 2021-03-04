@@ -1,6 +1,4 @@
-import './NewProjectBtn.css';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import firebase from '../../firebase/firebaseConfig';
 import { useState } from 'react';
 import '../../sass/main.scss';
 
@@ -47,16 +45,14 @@ function NewProjectBtn({ board, userId }) {
       });
   };
   return (
-    <div>
+    <div className='newProjectBtn'>
       <form
         className='project__form'
         onSubmit={addNewProject}
         autoComplete='off'
       >
-        <label className='project__label' htmlFor='project-name'>
-          New project
-        </label>
         <input
+          placeholder='🖍 New Project'
           required
           pattern='^[^\s]+(\s+[^\s]+)*$'
           title='Give a nice and.. normal title 😉'

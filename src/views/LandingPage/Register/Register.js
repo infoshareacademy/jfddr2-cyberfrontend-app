@@ -1,14 +1,12 @@
-import React from "react";
-import Form from "./Form";
-// import LoginButton from "./LandingPage";
-import './style.css';
+import React from 'react';
+import Form from './Form';
 
 const Register = () => {
-    return (
-        <div>
-            <Form />
-        </div>
-    )
-}
+  return (
+    <div>
+      <Form />
+    </div>
+  );
+};
 
 export default Register;

@@ -1,8 +1,11 @@
 import { useUser } from '../../contexts/UserContext';
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import firebase from 'firebase';
+import firebase from '../../firebase/firebaseConfig';
 import '../../sass/main.scss';
+import { useProject } from '../../contexts/ProjectContext';
+import SvgSettings from '../buttons/Settings';
+import SvgDelete from '../buttons/Delete';
 
 const snapshotToArrayWithId = (snapshot) => {
   const items = [];
@@ -13,11 +16,22 @@ const snapshotToArrayWithId = (snapshot) => {
   return items;
 };
 
-export const Column = ({ column, project, allColumns }) => {
+export const Column = ({
+  column,
+  project,
+  allColumns,
+  columnIndex,
+  deleteColumn,
+}) => {
   const { user } = useUser();
   const [tasks, setTasks] = useState(null);
   const [taskName, setTaskName] = useState('');
-  const [expandedTaskId, setExpandedTaskId] = useState('');
+  const {
+    expandedTaskId,
+    setExpandedTaskId,
+    expandedColumnIndex,
+    setExpandedColumnIndex,
+  } = useProject();
 
   const userUid = user.uid;
   const projectId = project.id;
@@ -91,91 +105,98 @@ export const Column = ({ column, project, allColumns }) => {
 
   return (
     <>
-      <input
-        type='radio'
-        name='select'
-        className='list-select'
-        checked
-        readOnly
-        required
-      />
-      <div className='list-title'>
+      <div
+        className='list-title'
+        onClick={() => {
+          setExpandedColumnIndex((old) =>
+            old === columnIndex ? '' : columnIndex
+          );
+        }}
+      >
         <span>{column.columnName}</span>
       </div>
-      <div className='list-content task'>
-        <form className='task__form' onSubmit={addTask} autoComplete='off'>
-          <label className='task__label' htmlFor='task-name'>
-            New task
-          </label>
-          <input
-            className='task__input'
-            value={taskName}
-            type='text'
-            onChange={(e) => setTaskName(e.target.value)}
-            required
-            pattern='^[^\s]+(\s+[^\s]+)*$'
-            title='Give a nice and.. normal title 😉'
-            placeholder='New Task...'
-          />
-        </form>
-        <ul>
-          {tasks &&
-            tasks.map((task) => {
-              return (
-                <li key={task.id}>
-                  <div className='list-row'>
-                    <h4>{task.taskName}</h4>
-                    <button
-                      className='optionBtn'
-                      onClick={() =>
-                        setExpandedTaskId((existingTaskId) => {
-                          if (existingTaskId === task.id) {
-                            return null;
-                          }
-                          return task.id;
-                        })
-                      }
-                    >
-                      ...
-                    </button>
-                  </div>
-                  {expandedTaskId === task.id &&
-                    ReactDOM.createPortal(
-                      <>
-                        <div className='selectContainer'>
-                          <span>Move to:</span>
-                          <select
-                            className='selectContainer__select'
-                            onChange={(event) => {
-                              moveTask(task, event.target.value);
-                            }}
-                            value={columnId}
-                          >
-                            {allColumns.map((column) => (
-                              <option
-                                disabled={column.id === columnId}
-                                key={column.id}
-                                value={column.id}
-                              >
-                                {column.columnName}
-                              </option>
-                            ))}
-                          </select>
-                          <button
-                            className='deleteBtn'
-                            onClick={() => deleteTask(task)}
-                          >
-                            ❌
-                          </button>
-                        </div>
-                      </>,
-                      document.getElementById('overlay')
-                    )}
-                </li>
-              );
-            })}
-        </ul>
-      </div>
+      {expandedColumnIndex === columnIndex && (
+        <div className='list-content task'>
+          <form className='task__form' onSubmit={addTask} autoComplete='off'>
+            {/* <label className='task__label' htmlFor='task-name'>
+              New task
+            </label> */}
+            <input
+              className='task__input'
+              value={taskName}
+              type='text'
+              onChange={(e) => setTaskName(e.target.value)}
+              required
+              pattern='^[^\s]+(\s+[^\s]+)*$'
+              title='Give a nice and.. normal title 😉'
+              placeholder='🖍 New Task'
+            />
+          </form>
+          <ul>
+            {tasks &&
+              tasks.map((task) => {
+                return (
+                  <li key={task.id}>
+                    <div className='list-row'>
+                      <h4>{task.taskName}</h4>
+                      <button
+                        className='optionBtn'
+                        onClick={() =>
+                          setExpandedTaskId((existingTaskId) => {
+                            if (existingTaskId === task.id) {
+                              return null;
+                            }
+                            return task.id;
+                          })
+                        }
+                      >
+                        <SvgSettings />
+                      </button>
+                    </div>
+                    {expandedTaskId === task.id &&
+                      ReactDOM.createPortal(
+                        <>
+                          <div className='selectContainer'>
+                            <span>Move to:</span>
+                            <select
+                              className='selectContainer__select'
+                              onChange={(event) => {
+                                moveTask(task, event.target.value);
+                              }}
+                              value={columnId}
+                            >
+                              {allColumns.map((column) => (
+                                <option
+                                  disabled={column.id === columnId}
+                                  key={column.id}
+                                  value={column.id}
+                                >
+                                  {column.columnName}
+                                </option>
+                              ))}
+                            </select>
+                            <button
+                              className='deleteBtn'
+                              onClick={() => deleteTask(task)}
+                            >
+                              <SvgDelete />
+                            </button>
+                          </div>
+                        </>,
+                        document.getElementById('overlay')
+                      )}
+                  </li>
+                );
+              })}
+          </ul>
+          <button
+            className='deleteBtn columnDelete'
+            onClick={() => deleteColumn(column)}
+          >
+            <SvgDelete />
+          </button>
+        </div>
+      )}
     </>
   );
 };
