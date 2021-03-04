@@ -10,6 +10,7 @@ const LandingView = ({ data, setData }) => {
 
   return (
     <div className="landingPage-container">
+      {/* <h1>EFFIcient</h1> */}
       <button
         onClick={() => {
           setVisibleFo(false);

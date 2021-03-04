@@ -23,7 +23,7 @@ const LoginValue = () => {
       <form className="form" onSubmit={handleSubmit}>
         <br></br>
         <h2>Nice to see you!</h2>
-        <h3> Login Here.</h3>
+        <h3> Login Here</h3>
 
         <div className="form-inputs">
           <label htmlFor="email" className="form-label">

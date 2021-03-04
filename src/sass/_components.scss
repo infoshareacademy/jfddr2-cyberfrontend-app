@@ -125,13 +125,21 @@ li {
 }
 
 input {
-  background-color: $highlighter;
+  background-color: transparent;
   outline: none;
   outline-style: none;
   border: none;
-  border-bottom: 1px solid $dark;
-  color: $dark;
+  border-bottom: 1px solid $light;
+  padding-top: 3%;
+  color: white;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  }
 }
-input[type="text"]:focus {
-  background-color: $highlighter;
-}
+
+// input:focus {
+//   background-color: transparent;
+// }
