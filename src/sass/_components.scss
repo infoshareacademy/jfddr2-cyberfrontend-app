@@ -52,6 +52,23 @@
   justify-content: space-between;
   align-items: center;
   margin: 5px;
+  .board__userName {
+    font-size: 2.5rem;
+    padding-left: 10px;
+  }
+}
+
+.projectsContaniner {
+  .projectsContaniner__title {
+    padding: 0 0 10px 10px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.newProjectBtn {
+  @include flexCenter;
+  padding: 10px 0;
 }
 
 .selectContainer {
@@ -65,21 +82,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: $medium;
-}
-
-.selectContainer__select {
-  background-color: $dark;
-  width: 60%;
-  border: 1px solid var(--select-border);
-  border-radius: 0.25em;
-  padding: 0.25em 0.5em;
-  font-size: 1rem;
-  cursor: pointer;
-  line-height: 1.1;
-  background-color: $dark;
-
-  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  background: $highlight;
 }
 
 .selectContainer__select {
@@ -88,48 +91,12 @@
   padding: 5px 35px 5px 5px;
   font-size: 16px;
   border: 1px solid #ccc;
+  border-radius: 0.25em;
   height: 34px;
+  color: $medium;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: url(../img/icons/swap-vertical-bold.png) 96% / 15% no-repeat
-    $light;
-}
-
-.project {
-  .project__title {
-    margin-bottom: 15px;
-    padding-left: 20px;
-  }
-  .project__form,
-  .task__form {
-    margin-bottom: 15px;
-    padding-left: 20px;
-    display: flex;
-    justify-content: space-around;
-    .project__label,
-    .task__label {
-      padding-right: 5px;
-    }
-  }
-}
-
-.singleproject {
-  &__link {
-    width: 80vw;
-  }
-}
-
-.single-row {
-  display: flex;
-  justify-content: space-between;
-  margin: 3px 5px;
-}
-
-li {
-  margin: 3px 5px;
-  .list-row {
-    display: flex;
-    justify-content: space-between;
-  }
+    $bgColor;
 }

@@ -7,15 +7,18 @@ function TableView() {
   const { user, userData } = useUser();
   return (
     <div>
-      <div className="board-nav">
+      <div className='board-nav'>
         <h3>
-          Hello <span>{userData.username || 'Anonymous'}</span>
+          Hello
+          <span className='board__userName'>
+            {userData.username || 'Anonymous'}
+          </span>
         </h3>
         <LogoutBtn />
       </div>
-      <div>
-        <h2>Your projects:</h2>
+      <div className='projectsContaniner'>
         <NewProjectBtn userId={user.uid} />
+        <h2 className='projectsContaniner__title'>Your projects:</h2>
         <NewAgeProjects />
       </div>
     </div>

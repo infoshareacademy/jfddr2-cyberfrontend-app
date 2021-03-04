@@ -45,23 +45,21 @@ function NewProjectBtn({ board, userId }) {
       });
   };
   return (
-    <div>
+    <div className='newProjectBtn'>
       <form
-        className="project__form"
+        className='project__form'
         onSubmit={addNewProject}
-        autoComplete="off"
+        autoComplete='off'
       >
-        <label className="project__label" htmlFor="project-name">
-          New project
-        </label>
         <input
+          placeholder='🖍 New Project'
           required
-          pattern="^[^\s]+(\s+[^\s]+)*$"
-          title="Give a nice and.. normal title 😉"
-          className="project__input"
-          id="project-name"
+          pattern='^[^\s]+(\s+[^\s]+)*$'
+          title='Give a nice and.. normal title 😉'
+          className='project__input'
+          id='project-name'
           value={projectName}
-          type="text"
+          type='text'
           onChange={(e) => setProjectName(e.target.value)}
         />
       </form>

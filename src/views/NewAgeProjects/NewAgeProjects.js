@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import firebase from '../../firebase/firebaseConfig';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-
 import '../../sass/main.scss';
+import SvgSettings from '../buttons/Settings';
+import SvgDelete from '../buttons/Delete';
 
 export const NewAgeProjects = () => {
   const { user } = useUser();
@@ -67,17 +68,17 @@ export const NewAgeProjects = () => {
               })
             }
           >
-            ...
+            <SvgSettings />
           </button>
           {expandedProjectId === project.id &&
             ReactDOM.createPortal(
               <>
                 <div className='selectContainer'>
                   <button
-                    className='deleteBtn'
+                    className='deleteBtn columnDelete'
                     onClick={() => deleteProject(project)}
                   >
-                    ❌
+                    <SvgDelete />
                   </button>
                 </div>
               </>,
