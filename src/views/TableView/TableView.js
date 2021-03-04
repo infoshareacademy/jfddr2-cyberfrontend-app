@@ -2,7 +2,7 @@ import NewProjectBtn from './NewProjectBtn';
 import './NewProjectBtn.css';
 import { useUser } from '../../contexts/UserContext';
 import { NewAgeProjects } from '../NewAgeProjects/NewAgeProjects';
-import firebase from 'firebase';
+import firebase from '../../firebase/firebaseConfig';
 
 function TableView() {
   const { user, userData } = useUser();

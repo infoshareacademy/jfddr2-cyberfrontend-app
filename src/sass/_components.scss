@@ -1,15 +1,28 @@
-@import "_buttons.scss";
-@import "_mixins.scss";
-@import "_colors.scss";
+@import '_buttons.scss';
+@import '_mixins.scss';
+@import '_colors.scss';
+
+// widok przed zalogowaniem
+
+.landingPage-container {
+  background: green;
+  height: 100%;
+}
+
+.effiLogo {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+// widok po zalogowaniu
 
 .homeView {
   @include flexCenter;
   .homeView__background {
-    // height: 100vh;       na prawdziwy mobile
-    // width: 100vw;
     height: 640px;
-    width: 320px;
-    // background-image: url("../img/LogoMakr-1dCNrf.png");
+    width: 360px;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -30,7 +43,7 @@
 }
 
 .effi {
-  font-family: "Leckerli One", cursive;
+  font-family: 'Leckerli One', cursive;
   font-size: 2rem;
 }
 
@@ -42,12 +55,17 @@
 }
 
 .selectContainer {
-  width: 100vw;
+  z-index: 999;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
   height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: $medium;
+  background: $medium;
   border-top: 2px solid $dark;
 }
 
@@ -62,7 +80,7 @@
   line-height: 1.1;
   background-color: $dark;
 
-  // background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
 }
 
 .selectContainer__select {
@@ -94,9 +112,6 @@
     .task__label {
       padding-right: 5px;
     }
-    .project__input,
-    .task__input {
-    }
   }
 }
 
@@ -117,17 +132,5 @@ li {
   .list-row {
     display: flex;
     justify-content: space-between;
-    // .optionBtn {
-    //   position: absolute;
-    //   right: 5px;
-    // }
   }
-}
-
-input {
-  background-color: $bgColor;
-  outline: none;
-  outline-style: none;
-  border: none;
-  border-bottom: 1px solid $dark;
 }

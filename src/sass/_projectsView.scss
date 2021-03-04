@@ -7,49 +7,13 @@
   font-family: 'Montserrat', sans-serif;
   overflow: hidden;
   width: 100%;
-  &-select {
-    cursor: pointer;
-    margin: 0;
-    opacity: 0;
-    z-index: 1;
-  }
-  &-title {
-    position: relative;
-    &:not(:nth-last-child(2))::after {
-      border: 1px solid transparent;
-      bottom: 0;
-      content: '';
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    & span {
-      bottom: 0px;
-      box-sizing: border-box;
-      display: block;
-      position: absolute;
-      white-space: nowrap;
-      width: 100%;
-    }
-  }
-  &-content {
-    box-sizing: border-box;
-    overflow: auto;
-    position: relative;
-    transition: margin 0.3s ease 0.1s;
-  }
-  &-select:checked + &-title + &-content {
-    margin-bottom: 0;
-    margin-right: 0;
-  }
 }
 
 ///////////////
 
 .list {
-  border-color: $light;
-  border-radius: 8px;
+  border-top-color: $medium;
+  border-bottom-color: $dark;
   border-style: solid;
   border-width: 1px;
   flex-direction: column;
@@ -58,7 +22,6 @@
   &-select {
     background-color: $light;
     color: $dark;
-    width: 100%;
     height: 65px;
     font-size: 15px;
   }
@@ -66,34 +29,17 @@
     transform: rotate(0deg);
     writing-mode: lr-tb;
     -ms-writing-mode: lr-tb;
-    // filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
 
     padding-left: 33px;
     padding-right: 33px;
     line-height: 65px;
-  }
-  &-select {
-    margin-bottom: -65px;
-    margin-right: -65px;
   }
 
   &-title:not(:nth-last-child(2))::after {
     border-bottom-color: $dark;
     border-right-color: transparent;
   }
-  &-content {
-    background-color: $bgColor;
-    color: $dark;
-    height: 280px;
-    margin-bottom: -280px;
-    margin-right: 0;
-    padding: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-direction: column;
-  }
+
   &-select:hover + &-title,
   &-select:checked + &-title {
     font-size: 1.8rem;
@@ -105,8 +51,7 @@
 //////// tite hover efect
 
 .project__title--wrapper {
-  width: 100vw;
-  // background: $medium;
+  width: 100%;
   font-weight: bold;
   text-transform: uppercase;
   color: $dark;
