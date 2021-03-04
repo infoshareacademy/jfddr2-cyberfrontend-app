@@ -1,0 +1,40 @@
+@import "_mixins.scss";
+@import "_colors.scss";
+
+.homeView {
+  background-image: linear-gradient(
+    -60deg,
+    #283e56 0%,
+    #1989ac 45%,
+    #970747 65%,
+    #fef4e8 80%
+  );
+
+  @include flexCenter;
+  .homeView__background {
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+  }
+  .homeView__title {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 0, 8rem;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  p,
+  h2 {
+    transition-property: transform;
+    transition-duration: 0.5s;
+  }
+  p:hover,
+  h2:hover {
+    color: rgb(12, 2, 2);
+    transform: scale(1.2);
+  }
+}

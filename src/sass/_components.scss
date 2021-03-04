@@ -2,33 +2,6 @@
 @import "_mixins.scss";
 @import "_colors.scss";
 
-.homeView {
-  @include flexCenter;
-  .homeView__background {
-    // height: 100vh;       na prawdziwy mobile
-    // width: 100vw;
-    height: 640px;
-    width: 320px;
-    // background-image: url("../img/LogoMakr-1dCNrf.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 40%;
-    filter: blur(5px) grayscale(80%);
-    z-index: -1;
-  }
-  .homeView__title {
-    position: absolute;
-    bottom: 15%;
-    left: 50%;
-    transform: translate(-50%);
-    font-size: 0.95rem;
-    color: rgb(39, 39, 39);
-    font-weight: 600;
-    text-align: center;
-  }
-}
-
 .effi {
   font-family: "Leckerli One", cursive;
   font-size: 2rem;

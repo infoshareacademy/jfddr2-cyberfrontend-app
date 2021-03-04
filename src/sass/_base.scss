@@ -2,5 +2,12 @@
 @import "_colors.scss";
 body {
   font-family: "Montserrat", sans-serif;
-  background-color: $bgColor;
+  height: 100vh;
 }
+
+// #root {
+//   background-color: #fff;
+//   @include positionCenter;
+//   height: 640px;
+//   width: 320px;
+// }

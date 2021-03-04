@@ -6,11 +6,14 @@ const HomeView = () => {
     <div className="homeView">
       <div className="homeView__background"></div>
       <div className="homeView__title">
-        <img src={logo} alt="" />
-        {/* <h2>
-          Welcome to <span className="effi">EFFI</span>
-        </h2> */}
-        <h2>From now your tasks gonna fly! Let`s try !</h2>
+        <div className="logo">
+          <img src={logo} alt="" />
+        </div>
+        <h2>Why EFFI? Here are some of the primary benefits:</h2>
+        <p>Online application to tackle all of your work in one place</p>
+        <p>Portfolio view of all your projects</p>
+        <p>Personalized to-do lists </p>
+        <p>Totally for free </p>
       </div>
     </div>
   );
