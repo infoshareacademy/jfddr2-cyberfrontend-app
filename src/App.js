@@ -13,16 +13,16 @@ const App = () => {
     <HashRouter basename={process.env.PUBLIC_URL}>
       <AuthGuard cover={<LandingPage />}>
         <Switch>
-          <Route path='/board/project/:projectId'>
-            <Nav />
+          <Route path="/board/project/:projectId">
             <NewAgeProject />
-          </Route>
-          <Route path='/board/'>
             <Nav />
-            <TableView />
           </Route>
-          <Route exact path='/'>
-            <Link to='/board'>
+          <Route path="/board/">
+            <TableView />
+            <Nav />
+          </Route>
+          <Route exact path="/">
+            <Link to="/board">
               <HomeView />
             </Link>
           </Route>
