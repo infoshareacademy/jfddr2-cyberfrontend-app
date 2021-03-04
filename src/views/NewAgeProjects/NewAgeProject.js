@@ -81,7 +81,7 @@ export const NewAgeProject = () => {
           required
           pattern='^[^\s]+(\s+[^\s]+)*$'
           title='Give a nice and.. normal title 😉'
-          placeholder='&#9999 New List'
+          placeholder='🖍 New List'
           className='project__input'
           id='column-name'
           value={columnName}

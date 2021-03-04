@@ -129,7 +129,7 @@ export const Column = ({
               required
               pattern='^[^\s]+(\s+[^\s]+)*$'
               title='Give a nice and.. normal title 😉'
-              placeholder='New Task...'
+              placeholder='🖍 New Task'
             />
           </form>
           <ul>
