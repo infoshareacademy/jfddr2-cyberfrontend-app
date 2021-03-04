@@ -1,5 +1,5 @@
 import './index-reset.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter, Switch, Route, Link } from 'react-router-dom';
 import TableView from './views/TableView/TableView';
 import Nav from './views/Nav/Nav';
 import { AuthGuard } from './views/AuthGuard/AuthGuard';
@@ -10,25 +10,25 @@ import './sass/main.scss';
 
 const App = () => {
   return (
-    <Router>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <AuthGuard cover={<LandingPage />}>
         <Switch>
-          <Route path='/board/project/:projectId'>
+          <Route path="/board/project/:projectId">
             <Nav />
             <NewAgeProject />
           </Route>
-          <Route path='/board/'>
+          <Route path="/board/">
             <Nav />
             <TableView />
           </Route>
-          <Route exact path='/'>
-            <Link to='/board'>
+          <Route exact path="/">
+            <Link to="/board">
               <HomeView />
             </Link>
           </Route>
         </Switch>
       </AuthGuard>
-    </Router>
+    </HashRouter>
   );
 };
 
