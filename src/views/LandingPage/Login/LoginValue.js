@@ -21,12 +21,13 @@ const LoginValue = () => {
   return (
     <div className="form-content-right">
       <form className="form" onSubmit={handleSubmit}>
+        <br></br>
         <h2>Nice to see you!</h2>
         <h3> Login Here.</h3>
 
         <div className="form-inputs">
           <label htmlFor="email" className="form-label">
-            Email
+            <br></br> {/* Email */}
           </label>
           <input
             id="email"
@@ -39,7 +40,7 @@ const LoginValue = () => {
           />
           <div className="form-inputs">
             <label htmlFor="password" className="form-label">
-              Password
+              {/* Password */}
             </label>
             <input
               id="password"
@@ -52,6 +53,7 @@ const LoginValue = () => {
             />
           </div>
         </div>
+        <br></br>
         <button className="form-input-btn" type="submit">
           SIGN IN
         </button>

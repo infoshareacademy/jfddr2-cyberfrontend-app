@@ -125,9 +125,13 @@ li {
 }
 
 input {
-  background-color: $bgColor;
+  background-color: $highlighter;
   outline: none;
   outline-style: none;
   border: none;
   border-bottom: 1px solid $dark;
+  color: $dark;
+}
+input[type="text"]:focus {
+  background-color: $highlighter;
 }

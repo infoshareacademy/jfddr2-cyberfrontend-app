@@ -39,33 +39,31 @@
   display: inline-block;
   transition: all 0.3s ease 0s;
   &:hover {
-    color: $medium;
+    // color: $medium;
     border-radius: 50px;
     border-color: $dark;
     transition: all 0.3s ease 0s;
   }
 }
 
-// login register buttons
+login register buttons .btn-hover {
+  width: 200px;
+  font-size: 16px;
+  font-weight: 600;
+  color: $light;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
 
-// .btn-hover {
-//   width: 200px;
-//   font-size: 16px;
-//   font-weight: 600;
-//   color: #fff;
-//   cursor: pointer;
-//   margin: 20px;
-//   height: 55px;
-//   text-align: center;
-//   border: none;
-//   background-size: 300% 100%;
-
-//   border-radius: 50px;
-//   moz-transition: all 0.4s ease-in-out;
-//   -o-transition: all 0.4s ease-in-out;
-//   -webkit-transition: all 0.4s ease-in-out;
-//   transition: all 0.4s ease-in-out;
-// }
+  border-radius: 50px;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
 
 // .btn-hover:hover {
 //   background-position: 100% 0;

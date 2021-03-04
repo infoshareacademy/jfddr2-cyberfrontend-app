@@ -1,4 +1,4 @@
-import "./LandingPage.css";
+// import "./LandingPage.css";
 import Register from "./Register/Register";
 import Form from "./Login/Form";
 import { useState } from "react";

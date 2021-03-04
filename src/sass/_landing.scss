@@ -1,0 +1,101 @@
+@import "_colors.scss";
+@import "_fonts.scss";
+@import "_mixins.scss";
+
+.landingPage-container {
+  @include flexCenter;
+  color: $dark;
+  background-color: $highlighter;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  position: absolute;
+}
+
+.btn-hover login {
+  @include positionCenter;
+  // background-color: $highlighter;
+}
+// $dark: #000;
+// $medium: #283e56;
+// $light: #1989ac;
+// $highlighter: #970747;
+// $bgColor: #fef4e8;
+
+.btn-hover {
+  width: 35%;
+  font-size: 20px;
+  font-weight: 600;
+  color: $bgColor;
+  cursor: pointer;
+  margin: 20px;
+  height: 12%;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+
+  border-radius: 30px;
+  //   moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+// .btn-hover:hover {
+//   background-position: 100% 0;
+//   moz-transition: all 0.4s ease-in-out;
+//   -o-transition: all 0.4s ease-in-out;
+//   -webkit-transition: all 0.4s ease-in-out;
+//   transition: all 0.4s ease-in-out;
+// }
+
+.btn-hover:focus {
+  outline: none;
+}
+
+.btn-hover.login {
+  background-image: linear-gradient(to right, $dark, $medium, $light, #4e4376);
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+// .form-content-right {
+//   @include flexCenter;
+//   position: relative;
+// }
+
+.form {
+  @include flexCenter;
+  // @include positionCenter;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: $dark;
+}
+
+.form-label {
+  background-color: $highlighter;
+  font-size: 25px;
+  display: flex;
+  flex-direction: row;
+  // color: $medium;
+  justify-content: flex-start;
+}
+
+.form-input {
+  background-color: $highlighter;
+  font-size: 25px;
+  display: flex;
+  flex-direction: row;
+  color: $dark;
+  justify-content: flex-start;
+}
+
+.form-input-btn {
+  background-color: $medium;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+  height: fit-content;
+  width: 30%;
+  background-image: linear-gradient(to right, $medium, $light);
+  // box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
