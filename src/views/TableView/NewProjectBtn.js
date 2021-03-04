@@ -1,4 +1,3 @@
-import './NewProjectBtn.css';
 import firebase from '../../firebase/firebaseConfig';
 import { useState } from 'react';
 import '../../sass/main.scss';

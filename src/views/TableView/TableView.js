@@ -14,10 +14,13 @@ function TableView() {
   return (
     <div>
       <div className='board-nav'>
-        <h3>Hello</h3>
-        <span className='board__userName'>
-          {userData.username || 'Anonymous'}
-        </span>
+        <h3>
+          Hello
+          <span className='board__userName'>
+            {userData.username || 'Anonymous'}
+          </span>
+        </h3>
+
         <button className='logoutBtn' onClick={logout}>
           <SvgLogout />
         </button>
