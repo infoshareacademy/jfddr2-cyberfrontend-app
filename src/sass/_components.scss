@@ -21,11 +21,8 @@
 .homeView {
   @include flexCenter;
   .homeView__background {
-    // height: 100vh;       na prawdziwy mobile
-    // width: 100vw;
     height: 640px;
     width: 360px;
-    // background-image: url("../img/LogoMakr-1dCNrf.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -115,9 +112,6 @@
     .task__label {
       padding-right: 5px;
     }
-    .project__input,
-    .task__input {
-    }
   }
 }
 
@@ -138,17 +132,5 @@ li {
   .list-row {
     display: flex;
     justify-content: space-between;
-    // .optionBtn {
-    //   position: absolute;
-    //   right: 5px;
-    // }
   }
 }
-
-// input {
-//   background-color: $bgColor;
-//   outline: none;
-//   outline-style: none;
-//   border: none;
-//   border-bottom: 1px solid $dark;
-// }
