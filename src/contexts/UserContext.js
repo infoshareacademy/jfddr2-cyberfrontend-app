@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect, useContext } from "react";
-import firebase from "firebase/app";
+import { createContext, useState, useEffect, useContext } from 'react';
+import firebase from 'firebase/app';
 
 const Context = createContext(null);
 
@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
       if (user) {
         firebase
           .firestore()
-          .collection("users")
+          .collection('users')
           .doc(user.uid)
           .onSnapshot((snapshot) => {
             setUserData(snapshot.data());

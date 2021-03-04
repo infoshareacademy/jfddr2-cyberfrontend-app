@@ -1,11 +1,9 @@
-import "./NewProjectBtn.css";
-import firebase from "firebase/app";
-import "firebase/firestore";
-import { useState } from "react";
-import "../../sass/main.scss";
+import firebase from '../../firebase/firebaseConfig';
+import { useState } from 'react';
+import '../../sass/main.scss';
 
 function NewProjectBtn({ board, userId }) {
-  const [projectName, setProjectName] = useState("");
+  const [projectName, setProjectName] = useState('');
 
   const addNewProject = (event) => {
     event.preventDefault();
@@ -20,50 +18,48 @@ function NewProjectBtn({ board, userId }) {
         createdAt: Date.now(),
       })
       .then((ref) => {
-        setProjectName("");
+        setProjectName('');
 
         ref
-          .collection("columns")
+          .collection('columns')
           .add({
-            columnName: "Todo",
+            columnName: 'Todo',
             createdAt: Date.now(),
           })
           .then((ref) => {
-            ref.collection("tasks").add({
-              taskName: "Be awesome",
+            ref.collection('tasks').add({
+              taskName: 'Be awesome',
               createdAt: Date.now(),
             });
           });
 
-        ref.collection("columns").add({
-          columnName: "In Progress",
+        ref.collection('columns').add({
+          columnName: 'In Progress',
           createdAt: Date.now(),
         });
 
-        ref.collection("columns").add({
-          columnName: "Done",
+        ref.collection('columns').add({
+          columnName: 'Done',
           createdAt: Date.now(),
         });
       });
   };
   return (
-    <div>
+    <div className='newProjectBtn'>
       <form
-        className="project__form"
+        className='project__form'
         onSubmit={addNewProject}
-        autoComplete="off"
+        autoComplete='off'
       >
-        <label className="project__label" htmlFor="project-name">
-          New project
-        </label>
         <input
+          placeholder='🖍 New Project'
           required
-          pattern="^[^\s]+(\s+[^\s]+)*$"
-          title="Give a nice and.. normal title 😉"
-          className="project__input"
-          id="project-name"
+          pattern='^[^\s]+(\s+[^\s]+)*$'
+          title='Give a nice and.. normal title 😉'
+          className='project__input'
+          id='project-name'
           value={projectName}
-          type="text"
+          type='text'
           onChange={(e) => setProjectName(e.target.value)}
         />
       </form>

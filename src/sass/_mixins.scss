@@ -10,3 +10,33 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+//@media
+$screen-480: 480px;
+$screen-768: 768px;
+$screen-1024: 1024px;
+$screen-1280: 1280px;
+
+@mixin breakpoint-phone {
+  @media screen and (min-width: #{$screen-480}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-tablet {
+  @media screen and (min-width: #{$screen-768}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-tablet-large {
+  @media screen and (min-width: #{$screen-1024}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-desktop {
+  @media screen and (min-width: #{$screen-1280}) {
+    @content;
+  }
+}

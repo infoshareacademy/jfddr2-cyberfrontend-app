@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import firebase from "firebase";
+import { useState, useEffect } from 'react';
+import firebase from '../../../firebase/firebaseConfig';
 
 const RegisterValue = (callback, validate) => {
   const [values, setValues] = useState({
-    username: "",
-    email: "",
-    password: "",
-    password2: "",
+    username: '',
+    email: '',
+    password: '',
+    password2: '',
   });
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -27,7 +27,7 @@ const RegisterValue = (callback, validate) => {
       .auth()
       .createUserWithEmailAndPassword(values.email, values.password)
       .then((cred) => {
-        firebase.firestore().collection("users").doc(cred.user.uid).set({
+        firebase.firestore().collection('users').doc(cred.user.uid).set({
           username: values.username,
           email: values.email,
         });
@@ -38,32 +38,32 @@ const RegisterValue = (callback, validate) => {
           .firestore()
           .collection(`users/${cred.user.uid}/projects`)
           .add({
-            projectName: "Starter project",
+            projectName: 'Starter project',
             archive: false,
             favourite: false,
             createdAt: Date.now(),
           })
           .then((ref) => {
             ref
-              .collection("columns")
+              .collection('columns')
               .add({
-                columnName: "Todo",
+                columnName: 'Todo',
                 createdAt: Date.now(),
               })
               .then((ref) => {
-                ref.collection("tasks").add({
-                  taskName: "Be awesome",
+                ref.collection('tasks').add({
+                  taskName: 'Be awesome',
                   createdAt: Date.now(),
                 });
               });
 
-            ref.collection("columns").add({
-              columnName: "In Progress",
+            ref.collection('columns').add({
+              columnName: 'In Progress',
               createdAt: Date.now(),
             });
 
-            ref.collection("columns").add({
-              columnName: "Done",
+            ref.collection('columns').add({
+              columnName: 'Done',
               createdAt: Date.now(),
             });
           });

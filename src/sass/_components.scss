@@ -2,6 +2,42 @@
 @import "_mixins.scss";
 @import "_colors.scss";
 
+// widok przed zalogowaniem
+
+.effiLogo {
+  width: 40%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+// widok po zalogowaniu
+
+// .homeView {
+//   @include flexCenter;
+//   .homeView__background {
+//     height: 640px;
+//     width: 360px;
+//     background-repeat: no-repeat;
+//     background-attachment: fixed;
+//     background-position: center;
+//     background-size: 40%;
+//     filter: blur(5px) grayscale(80%);
+//     z-index: -1;
+//   }
+//   .homeView__title {
+//     position: absolute;
+//     bottom: 15%; wymiana walut
+//     left: 50%;
+//     transform: t wymiana walut(-50%);
+//     font-size: 0 wymiana walut
+//     color: rgb(3 wymiana walut9);
+//     font-weight: 600;
+//     text-align: center;
+//   }
+// }
+
 .effi {
   font-family: "Leckerli One", cursive;
   font-size: 2rem;
@@ -12,30 +48,37 @@
   justify-content: space-between;
   align-items: center;
   margin: 5px;
+  .board__userName {
+    font-size: 2.5rem;
+    padding-left: 10px;
+  }
+}
+
+.projectsContaniner {
+  .projectsContaniner__title {
+    padding: 0 0 10px 10px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.newProjectBtn {
+  @include flexCenter;
+  padding: 10px 0;
 }
 
 .selectContainer {
-  width: 100vw;
+  z-index: 999;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
   height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: $medium;
-  border-top: 2px solid $dark;
-}
-
-.selectContainer__select {
-  background-color: $dark;
-  width: 60%;
-  border: 1px solid var(--select-border);
-  border-radius: 0.25em;
-  padding: 0.25em 0.5em;
-  font-size: 1rem;
-  cursor: pointer;
-  line-height: 1.1;
-  background-color: $dark;
-
-  // background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  background: $highlight;
 }
 
 .selectContainer__select {
@@ -44,12 +87,14 @@
   padding: 5px 35px 5px 5px;
   font-size: 16px;
   border: 1px solid #ccc;
+  border-radius: 0.25em;
   height: 34px;
+  color: $medium;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: url(../img/icons/swap-vertical-bold.png) 96% / 15% no-repeat
-    $light;
+    $bgColor;
 }
 
 .project {
@@ -98,9 +143,21 @@ li {
 }
 
 input {
-  background-color: $bgColor;
+  background-color: transparent;
   outline: none;
   outline-style: none;
   border: none;
-  border-bottom: 1px solid $dark;
+  border-bottom: 1px solid $light;
+  padding-top: 3%;
+  color: white;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  }
 }
+
+// input:focus {
+//   background-color: transparent;
+// }

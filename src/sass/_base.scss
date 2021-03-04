@@ -2,7 +2,12 @@
 @import "_colors.scss";
 body {
   font-family: "Montserrat", sans-serif;
-  height: 100vh;
+  background-color: $medium;
+}
+
+#overlay {
+  position: fixed;
+  bottom: 0px;
 }
 
 // #root {
