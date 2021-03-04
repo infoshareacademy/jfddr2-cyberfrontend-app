@@ -1,7 +1,7 @@
-import Register from './Register/Register';
-import Form from './Login/Form';
-import { useState } from 'react';
-import logo from '../../img/logo.png';
+import Register from "./Register/Register";
+import Form from "./Login/Form";
+import { useState } from "react";
+import logo from "../../img/logo.png";
 
 const LandingView = ({ data, setData }) => {
   const [visibleReg, setVisibleReg] = useState(false);
@@ -9,6 +9,7 @@ const LandingView = ({ data, setData }) => {
 
   return (
     <div className="landingPage-container">
+      {/* <h1>EFFIcient</h1> */}
       <button
         onClick={() => {
           setVisibleFo(false);

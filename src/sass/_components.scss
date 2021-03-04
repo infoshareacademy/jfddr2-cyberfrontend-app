@@ -1,17 +1,13 @@
-@import '_buttons.scss';
-@import '_mixins.scss';
-@import '_colors.scss';
+@import "_buttons.scss";
+@import "_mixins.scss";
+@import "_colors.scss";
 
 // widok przed zalogowaniem
 
-.landingPage-container {
-  background: green;
-  height: 100%;
-}
-
 .effiLogo {
+  width: 40%;
   position: absolute;
-  bottom: 10%;
+  bottom: 0;
   left: 50%;
   transform: translate(-50%);
 }
@@ -43,7 +39,7 @@
 }
 
 .effi {
-  font-family: 'Leckerli One', cursive;
+  font-family: "Leckerli One", cursive;
   font-size: 2rem;
 }
 
@@ -100,3 +96,68 @@
   background: url(../img/icons/swap-vertical-bold.png) 96% / 15% no-repeat
     $bgColor;
 }
+
+.project {
+  .project__title {
+    margin-bottom: 15px;
+    padding-left: 20px;
+  }
+  .project__form,
+  .task__form {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-around;
+    .project__label,
+    .task__label {
+      padding-right: 5px;
+    }
+    .project__input,
+    .task__input {
+    }
+  }
+}
+
+.singleproject {
+  &__link {
+    width: 80vw;
+  }
+}
+
+.single-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 3px 5px;
+}
+
+li {
+  margin: 3px 5px;
+  .list-row {
+    display: flex;
+    justify-content: space-between;
+    // .optionBtn {
+    //   position: absolute;
+    //   right: 5px;
+    // }
+  }
+}
+
+input {
+  background-color: transparent;
+  outline: none;
+  outline-style: none;
+  border: none;
+  border-bottom: 1px solid $light;
+  padding-top: 3%;
+  color: white;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  }
+}
+
+// input:focus {
+//   background-color: transparent;
+// }
