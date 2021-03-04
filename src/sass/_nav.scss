@@ -9,6 +9,23 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+
+  & > svg {
+    display: none;
+  }
+
+  @include breakpoint-desktop {
+    left: 0;
+    top: 0;
+    width: 25%;
+    flex-direction: column;
+    justify-content: start;
+
+    & > svg {
+      display: flex;
+      margin: 50px 0;
+    }
+  }
 }
 
 .class__list {
@@ -32,6 +49,18 @@
     }
   }
 
+  &-text {
+    display: none;
+
+    @include breakpoint-desktop {
+      display: block;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
   a {
     padding: 10px 0;
     display: flex;
@@ -39,6 +68,12 @@
 
   svg {
     margin: auto 1.1rem;
+  }
+
+  @include breakpoint-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
