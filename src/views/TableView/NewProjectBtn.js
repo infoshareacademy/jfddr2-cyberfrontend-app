@@ -51,9 +51,6 @@ function NewProjectBtn({ board, userId }) {
         onSubmit={addNewProject}
         autoComplete='off'
       >
-        {/* <label className='project__label' htmlFor='project-name'>
-          New project
-        </label> */}
         <input
           placeholder='🖍 New Project'
           required

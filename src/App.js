@@ -1,4 +1,3 @@
-import './index-reset.css';
 import { HashRouter, Switch, Route, Link } from 'react-router-dom';
 import TableView from './views/TableView/TableView';
 import Nav from './views/Nav/Nav';
@@ -14,12 +13,12 @@ const App = () => {
       <AuthGuard cover={<LandingPage />}>
         <Switch>
           <Route path="/board/project/:projectId">
-            <Nav />
             <NewAgeProject />
+            <Nav />
           </Route>
           <Route path="/board/">
-            <Nav />
             <TableView />
+            <Nav />
           </Route>
           <Route exact path="/">
             <Link to="/board">

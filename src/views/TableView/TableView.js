@@ -1,16 +1,10 @@
 import NewProjectBtn from './NewProjectBtn';
-import './NewProjectBtn.css';
 import { useUser } from '../../contexts/UserContext';
 import { NewAgeProjects } from '../NewAgeProjects/NewAgeProjects';
-import firebase from '../../firebase/firebaseConfig';
-import SvgLogout from '../buttons/Logout';
+import LogoutBtn from './LogoutBtn';
 
 function TableView() {
   const { user, userData } = useUser();
-
-  const logout = () => {
-    firebase.auth().signOut();
-  };
   return (
     <div>
       <div className='board-nav'>
@@ -20,10 +14,7 @@ function TableView() {
             {userData.username || 'Anonymous'}
           </span>
         </h3>
-
-        <button className='logoutBtn' onClick={logout}>
-          <SvgLogout />
-        </button>
+        <LogoutBtn />
       </div>
       <div className='projectsContaniner'>
         <NewProjectBtn userId={user.uid} />
