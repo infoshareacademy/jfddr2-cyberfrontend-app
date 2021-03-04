@@ -1,13 +1,48 @@
+@import '_mixins.scss';
+
 .nav {
   display: flex;
   background: $light;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .class__list {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+
+  &-element {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    text-align: center;
+
+    @include breakpoint-phone {
+      font-size: 40px;
+    }
+
+    @include breakpoint-tablet {
+      font-size: 50px;
+    }
+  }
+
+  a {
+    padding: 10px 0;
+    display: flex;
+  }
+
+  svg {
+    margin: auto 1.1rem;
+  }
 }
+
+// @include breakpoint-phone
+// @include breakpoint-tablet
+// @include breakpoint-tablet-large
+// @include breakpoint-desktop

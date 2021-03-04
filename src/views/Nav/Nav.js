@@ -7,12 +7,12 @@ function TopNav() {
   return (
     <nav className="nav">
       <ul className="class__list">
-        <li>
+        <li className="class__list-element">
           <Link to="/">
             <Home />
           </Link>
         </li>
-        <li>
+        <li className="class__list-element">
           <Link to="/board">
             <Back />
           </Link>
