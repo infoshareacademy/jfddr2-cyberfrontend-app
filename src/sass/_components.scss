@@ -1,6 +1,6 @@
-@import "_buttons.scss";
-@import "_mixins.scss";
-@import "_colors.scss";
+@import '_buttons.scss';
+@import '_mixins.scss';
+@import '_colors.scss';
 
 // widok przed zalogowaniem
 
@@ -17,13 +17,9 @@
 .homeView {
   @include flexCenter;
   .homeView__background {
-    height: 640px;
-    width: 360px;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 40%;
-    filter: blur(5px) grayscale(80%);
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(61deg, #283e56 50%, #970747 50%);
     z-index: -1;
   }
   .homeView__title {
@@ -39,27 +35,8 @@
 }
 
 .effi {
-  font-family: "Leckerli One", cursive;
+  font-family: 'Leckerli One', cursive;
   font-size: 2rem;
-}
-
-.board-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 5px;
-  .board__userName {
-    font-size: 2.5rem;
-    padding-left: 10px;
-  }
-}
-
-.projectsContaniner {
-  .projectsContaniner__title {
-    padding: 0 0 10px 10px;
-    display: flex;
-    align-items: center;
-  }
 }
 
 .newProjectBtn {
@@ -73,28 +50,39 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: $bgColor;
   height: 50px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-around;
   align-items: center;
   background: $highlight;
+
+  @include breakpoint-desktop {
+    padding-right: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    gap: 30px;
+    justify-content: flex-end;
+  }
 }
 
 .selectContainer__select {
-  margin: 50px;
+  // margin: 50px;
   width: 150px;
   padding: 5px 35px 5px 5px;
   font-size: 16px;
-  border: 1px solid #ccc;
   border-radius: 0.25em;
-  height: 34px;
+  height: 40px;
   color: $medium;
+  font-size: 1rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: url(../img/icons/swap-vertical-bold.png) 96% / 15% no-repeat
     $bgColor;
+  @include breakpoint-desktop {
+    font-size: 1.6rem;
+  }
 }
 
 .project {
@@ -127,7 +115,7 @@
 .single-row {
   display: flex;
   justify-content: space-between;
-  margin: 3px 5px;
+  padding: 3px 20px;
 }
 
 li {

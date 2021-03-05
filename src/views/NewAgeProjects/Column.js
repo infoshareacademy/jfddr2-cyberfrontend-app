@@ -132,7 +132,7 @@ export const Column = ({
               placeholder='🖍 New Task'
             />
           </form>
-          <ul>
+          <ul className='task__list'>
             {tasks &&
               tasks.map((task) => {
                 return (
