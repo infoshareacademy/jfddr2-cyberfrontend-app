@@ -46,7 +46,7 @@ const LoginValue = () => {
               id="password"
               type="passord"
               name="password"
-              className="form-input"
+              className="form-input password"
               placeholder="Please enter your password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}

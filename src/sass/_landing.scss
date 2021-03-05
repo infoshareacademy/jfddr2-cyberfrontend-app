@@ -5,11 +5,15 @@
 .landingPage-container {
   @include flexCenter;
   color: $dark;
+  padding-top: 0px;
   background-color: $medium;
   // height: 100vh;
   // width: 100%;
   flex-direction: column;
   // position: absolute;
+  @media (min-width: 768px) {
+    padding-top: 100px;
+  }
 }
 
 .btn-hover login {
@@ -18,12 +22,14 @@
 }
 
 .btn-hover {
-  width: 35%;
+  width: 250px;
+  padding: 12px;
   font-size: 20px;
   font-weight: 600;
   color: $bgColor;
   cursor: pointer;
-  margin: 20px;
+  margin: 10px 0;
+  margin-bottom: 5px;
   height: 12%;
   text-align: center;
   border: none;
@@ -60,10 +66,10 @@
 .form {
   @include flexCenter;
   // @include positionCenter;
-  position: fixed;
+  // position: fixed;
   background-color: $medium;
-  left: 50%;
-  transform: translate(-50%);
+  // left: 50%;
+  // transform: translate(-50%);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -82,11 +88,17 @@
 
 .form-input {
   background-color: $medium;
-  font-size: 25px;
+  font-size: 15px;
+  width: 250px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   color: white;
   justify-content: flex-start;
+
+  &.password {
+    -webkit-text-security: disc;
+  }
 }
 
 .form-input-btn {
@@ -95,7 +107,9 @@
   border: none;
   border-radius: 20px;
   height: fit-content;
-  width: 30%;
+  width: 150px;
+  padding: 8px 12px;
+  font-size: 20px;
   background-image: linear-gradient(to right, $medium, $light);
   // box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
