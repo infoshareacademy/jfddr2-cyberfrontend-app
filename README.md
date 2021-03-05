@@ -10,11 +10,11 @@ Our motto is to be efficient. That's why we created EFFI.
 
 We know how important mobility is, which is why our application looks great on smartphones.
 
-![phoneView](src/img/screenshoots/phoneView.png)
+![phoneView](./src/img/screenshots/phoneView.png)
 
 But of course you can use it on any device
 
-![deskopView](src/img/screenshoots/deskopView.png)
+![deskopView](./src/img/screenshots/deskopView.png)
 
 ### 2. Features
 
