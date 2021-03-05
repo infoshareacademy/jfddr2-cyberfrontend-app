@@ -6,20 +6,26 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  position: absolute;
+
+  position: fixed;
   bottom: 0;
   width: 100%;
+  height: 50px;
 
   & > svg {
     display: none;
   }
 
-  @include breakpoint-desktop {
+  @include breakpoint-tablet-large {
     left: 0;
     top: 0;
     width: 25%;
     flex-direction: column;
     justify-content: start;
+
+    position: inherit;
+    flex: 0 0 25%;
+    height: 100vh;
 
     & > svg {
       display: flex;
@@ -52,7 +58,7 @@
   &-text {
     display: none;
 
-    @include breakpoint-desktop {
+    @include breakpoint-tablet-large {
       display: block;
 
       &:hover {
@@ -70,7 +76,7 @@
     margin: auto 1.1rem;
   }
 
-  @include breakpoint-desktop {
+  @include breakpoint-tablet-large {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,4 +86,4 @@
 // @include breakpoint-phone
 // @include breakpoint-tablet
 // @include breakpoint-tablet-large
-// @include breakpoint-desktop
+// @include breakpoint-tablet-large
