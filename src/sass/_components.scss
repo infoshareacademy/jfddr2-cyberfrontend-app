@@ -1,6 +1,6 @@
-@import "_buttons.scss";
-@import "_mixins.scss";
-@import "_colors.scss";
+@import '_buttons.scss';
+@import '_mixins.scss';
+@import '_colors.scss';
 
 // widok przed zalogowaniem
 
@@ -23,7 +23,7 @@ body {
   // bottom: 10px;
   // left: 50%;
   // transform: translate(-50%);
-  
+
   @media (min-width: 768px) {
     width: 300px;
     bottom: 50px;
@@ -31,7 +31,7 @@ body {
 }
 
 .effi {
-  font-family: "Leckerli One", cursive;
+  font-family: 'Leckerli One', cursive;
   font-size: 2rem;
 }
 
@@ -49,9 +49,10 @@ body {
   background-color: $bgColor;
   height: 50px;
   display: flex;
-  justify-content: flex-around;
+  justify-content: space-around;
   align-items: center;
   background: $highlight;
+  font-size: 1.5rem;
 
   @include breakpoint-tablet-large {
     padding-right: 20px;
