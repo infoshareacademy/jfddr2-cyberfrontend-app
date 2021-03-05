@@ -1,9 +1,10 @@
+import '../../sass/main.scss';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useUser } from '../../contexts/UserContext';
 import firebase from '../../firebase/firebaseConfig';
 import { Column } from './Column';
-import '../../sass/main.scss';
 import { ProjectProvider } from '../../contexts/ProjectContext';
 
 export const NewAgeProject = () => {
@@ -68,43 +69,75 @@ export const NewAgeProject = () => {
       .delete();
   };
 
+  const onDragEnd = (result) => {
+    if (!result.destination) return;
+    const items = Array.from(columns);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setColumns(items);
+  };
+
   return (
-    <div className='project'>
-      <div className='project__title--wrapper'>
-        <h1 className='project__title'>{project.projectName}</h1>
+    <div className="project">
+      <div className="project__title--wrapper">
+        <h1 className="project__title">{project.projectName}</h1>
       </div>
-      <form className='project__form' onSubmit={addColumn} autoComplete='off'>
+      <form className="project__form" onSubmit={addColumn} autoComplete="off">
         {/* <label className='project__label' htmlFor='column-name'>
           Add New List
         </label> */}
         <input
           required
-          pattern='^[^\s]+(\s+[^\s]+)*$'
-          title='Give a nice and.. normal title 😉'
-          placeholder='🖍 New List'
-          className='project__input'
-          id='column-name'
+          pattern="^[^\s]+(\s+[^\s]+)*$"
+          title="Give a nice and.. normal title 😉"
+          placeholder="🖍 New List"
+          className="project__input"
+          id="column-name"
           value={columnName}
-          type='text'
+          type="text"
           onChange={(e) => setColumnName(e.target.value)}
         />
       </form>
-      <ProjectProvider>
-        {columns &&
-          columns.map((column, index) => {
-            return (
-              <div className='list' key={column.id}>
-                <Column
-                  columnIndex={index}
-                  project={project}
-                  column={column}
-                  allColumns={columns}
-                  deleteColumn={deleteColumn}
-                />
-              </div>
-            );
-          })}
-      </ProjectProvider>
+      <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
+        <ProjectProvider>
+          <Droppable droppableId="droppableColumns">
+            {(provided) => (
+              <section {...provided.droppableProps} ref={provided.innerRef}>
+                {columns &&
+                  columns.map((column, index) => {
+                    return (
+                      <Draggable
+                        key={column.id}
+                        draggableId={column.id}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            key={column.id}
+                            className="list"
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <Column
+                              columnIndex={index}
+                              project={project}
+                              column={column}
+                              allColumns={columns}
+                              deleteColumn={deleteColumn}
+                            />
+                          </div>
+                        )}
+                      </Draggable>
+                    );
+                  })}
+                {provided.placeholder}
+              </section>
+            )}
+          </Droppable>
+        </ProjectProvider>
+      </DragDropContext>
     </div>
   );
 };
