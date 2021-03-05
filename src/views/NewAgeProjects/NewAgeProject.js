@@ -70,41 +70,43 @@ export const NewAgeProject = () => {
 
   return (
     <div className='project'>
-      <div className='project__title--wrapper'>
-        <h1 className='project__title'>{project.projectName}</h1>
+      <div className='project__wrapper'>
+        <div className='project__title--wrapper'>
+          <h1 className='project__title'>{project.projectName}</h1>
+        </div>
+        <form className='project__form' onSubmit={addColumn} autoComplete='off'>
+          {/* <label className='project__label' htmlFor='column-name'>
+            Add New List
+          </label> */}
+          <input
+            required
+            pattern='^[^\s]+(\s+[^\s]+)*$'
+            title='Give a nice and.. normal title 😉'
+            placeholder='🖍 New List'
+            className='project__input'
+            id='column-name'
+            value={columnName}
+            type='text'
+            onChange={(e) => setColumnName(e.target.value)}
+          />
+        </form>
+        <ProjectProvider>
+          {columns &&
+            columns.map((column, index) => {
+              return (
+                <div className='list' key={column.id}>
+                  <Column
+                    columnIndex={index}
+                    project={project}
+                    column={column}
+                    allColumns={columns}
+                    deleteColumn={deleteColumn}
+                  />
+                </div>
+              );
+            })}
+        </ProjectProvider>
       </div>
-      <form className='project__form' onSubmit={addColumn} autoComplete='off'>
-        {/* <label className='project__label' htmlFor='column-name'>
-          Add New List
-        </label> */}
-        <input
-          required
-          pattern='^[^\s]+(\s+[^\s]+)*$'
-          title='Give a nice and.. normal title 😉'
-          placeholder='🖍 New List'
-          className='project__input'
-          id='column-name'
-          value={columnName}
-          type='text'
-          onChange={(e) => setColumnName(e.target.value)}
-        />
-      </form>
-      <ProjectProvider>
-        {columns &&
-          columns.map((column, index) => {
-            return (
-              <div className='list' key={column.id}>
-                <Column
-                  columnIndex={index}
-                  project={project}
-                  column={column}
-                  allColumns={columns}
-                  deleteColumn={deleteColumn}
-                />
-              </div>
-            );
-          })}
-      </ProjectProvider>
     </div>
   );
 };
