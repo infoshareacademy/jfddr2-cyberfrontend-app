@@ -34,8 +34,6 @@ yarn install
 
 That's all!
 
-### 3.
-
 ### License
 
 Open Source.
