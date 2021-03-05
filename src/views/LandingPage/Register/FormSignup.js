@@ -73,7 +73,7 @@ const FormSignup = ({ submitForm }) => {
             id="password"
             type="passord"
             name="password"
-            className="form-input"
+            className="form-input password"
             placeholder="Enter your password"
             value={values.password}
             onChange={handleChange}
@@ -88,7 +88,7 @@ const FormSignup = ({ submitForm }) => {
             id="password2"
             type="passord"
             name="password2"
-            className="form-input"
+            className="form-input password"
             placeholder="Confirm your password"
             value={values.password2}
             onChange={handleChange}
