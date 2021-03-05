@@ -4,6 +4,19 @@
 
 // widok przed zalogowaniem
 
+body {
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+
 .effiLogo {
   width: 40%;
   position: absolute;
@@ -86,6 +99,17 @@
 }
 
 .project {
+  position: inherit;
+  flex: 0 0 75%;
+  height: 100vh;
+  overflow-y: auto;
+
+  @include breakpoint-tablet-large {
+    flex: 0 0 auto;
+    margin: 0 10px;
+    border-radius: 10px;
+  }
+
   .project__title {
     margin-bottom: 15px;
     padding-left: 20px;
@@ -99,9 +123,6 @@
     .project__label,
     .task__label {
       padding-right: 5px;
-    }
-    .project__input,
-    .task__input {
     }
   }
 }
