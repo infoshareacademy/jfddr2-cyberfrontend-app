@@ -3,6 +3,19 @@
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: $medium;
+  &::-webkit-scrollbar {
+    width: 15px; /* width of the entire scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $medium; /* color of the tracking area */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $light; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid $medium; /* creates padding around scroll thumb */
+  }
 }
 
 #overlay {
