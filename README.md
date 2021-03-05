@@ -55,11 +55,17 @@ yarn install
 
 That's all!
 
+<<<<<<< HEAD
+
 ### 4. The future of the App
 
 We plan to introduce further improvements in the near future.
 We are going to introduce a user panel with the option of adding an avatar.
 We're going to add the ability to select favorite or archived projects.
+
+=======
+
+> > > > > > > develop
 
 ### License
 
