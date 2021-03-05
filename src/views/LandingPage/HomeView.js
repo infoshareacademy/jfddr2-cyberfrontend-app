@@ -9,11 +9,12 @@ const HomeView = () => {
         <div className="logo">
           <img src={logo} alt="" />
         </div>
-        <h2>Why EFFI? Here are some of the primary benefits:</h2>
-        <p>Online application to tackle all of your work in one place</p>
-        <p>Portfolio view of all your projects</p>
-        <p>Personalized to-do lists </p>
-        <p>Totally for free </p>
+        <p>Online application to tackle</p>
+        <p>all of your work in one place.</p>
+        <p>Portfolio view</p>
+        <p>of all your projects.</p>
+        <p>Personalized to-do lists.</p>
+        {/* <p>Totally for free.</p> */}
       </div>
     </div>
   );
