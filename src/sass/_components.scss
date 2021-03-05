@@ -57,7 +57,7 @@
   align-items: center;
   background: $highlight;
 
-  @include breakpoint-desktop {
+  @include breakpoint-tablet-large {
     padding-right: 20px;
     font-size: 2rem;
     font-weight: bold;
@@ -80,7 +80,7 @@
   appearance: none;
   background: url(../img/icons/swap-vertical-bold.png) 96% / 15% no-repeat
     $bgColor;
-  @include breakpoint-desktop {
+  @include breakpoint-tablet-large {
     font-size: 1.6rem;
   }
 }
