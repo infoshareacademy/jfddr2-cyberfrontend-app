@@ -13,8 +13,10 @@ const App = () => {
       <AuthGuard cover={<LandingPage />}>
         <Switch>
           <Route path="/board/project/:projectId">
-            <NewAgeProject />
-            <Nav />
+            <div className="container">
+              <NewAgeProject />
+              <Nav />
+            </div>
           </Route>
           <Route path="/board/">
             <TableView />

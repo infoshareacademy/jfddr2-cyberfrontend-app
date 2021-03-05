@@ -1,41 +1,94 @@
-@import "_colors.scss";
-@import "_fonts.scss";
+@import '_colors.scss';
+@import '_fonts.scss';
+
+///////////////
+.board-wrapper {
+  @include breakpoint-tablet-large {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 75%;
+    padding: 0 20px 20px;
+  }
+  .board-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+    color: $bgColor;
+    .board__userName {
+      font-size: 2.5rem;
+      padding-left: 10px;
+      @include breakpoint-tablet-large {
+        padding-left: 30px;
+        font-size: 3rem;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+.projectsContainer {
+  @include breakpoint-tablet-large {
+  }
+
+  .board-header {
+    .projectsContainer__title {
+      padding: 0 0 10px 10px;
+      display: flex;
+      align-items: center;
+      color: $bgColor;
+      font-size: 1.5rem;
+      @include breakpoint-tablet-large {
+      }
+    }
+    .projectsContainer__newProjectBtn {
+      @include breakpoint-tablet-large {
+      }
+    }
+    @include breakpoint-tablet-large {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+    }
+  }
+  .projectsContainer__newProjects {
+    @include breakpoint-tablet-large {
+    }
+  }
+}
+
+//// single project
 
 .list {
   box-sizing: border-box;
   display: flex;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   overflow: hidden;
   width: 100%;
 }
 
-///////////////
-
 .list {
-  // border-top-color: $medium;
-  // border-bottom-color: $dark;
-  border-style: solid;
-  border-width: 1px;
   flex-direction: column;
   height: auto;
   &-title,
   &-select {
     background-color: $light;
-    color: $dark;
-    font-size: 2rem;
+    color: $bgColor;
+    font-size: 2.5rem;
   }
   &-title span {
     padding-left: 33px;
     padding-right: 33px;
     line-height: 65px;
   }
+}
 
-  // &-select:hover + &-title,
-  // &-select:checked + &-title {
-  //   font-size: 1.8rem;
-  //   background-color: $medium;
-  //   color: $bgColor;
-  // }
+.task__list {
+  min-height: 150px;
+  @include breakpoint-tablet-large {
+    padding: 5px 20px;
+  }
 }
 
 //////// tite hover efect
@@ -44,17 +97,14 @@
   width: 100%;
   font-weight: bold;
   text-transform: uppercase;
-  color: $dark;
-  & {
-    display: inline-block;
-    transition: 1s;
-    &:hover {
-      transform: skewX(-10deg) translateX(10px);
-      cursor: pointer;
-    }
+  color: $bgColor;
+  @include breakpoint-tablet-large {
+    margin-left: 100px;
+    width: auto;
   }
 }
 
+///////// single project columns view
 .project {
   .project__title {
     margin-bottom: 15px;
@@ -71,27 +121,53 @@
       padding-right: 5px;
     }
   }
-}
-
-.singleproject {
-  &__link {
-    width: 80vw;
+  .project__form {
+    //te dwa absoluty togluja inputy
+    @include breakpoint-tablet-large {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+  .task__form {
+    @include breakpoint-tablet-large {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+  @include breakpoint-tablet-large {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 75%;
+    padding: 20px 0 0;
   }
 }
+
+// .singleproject {
+//   &__link {
+//     width: 80vw;
+//   }
+// }
 
 .single-row {
   display: flex;
   justify-content: space-between;
   margin: 3px 5px;
-}
-
-li {
-  margin: 3px 5px;
-  .list-row {
-    display: flex;
-    justify-content: space-between;
+  a {
+    color: $bgColor;
+    font-size: 2rem;
   }
 }
+
+// li {
+//   margin: 3px 5px;
+//   .list-row {
+//     display: flex;
+//     justify-content: space-between;
+//   }
+// }
 // single project "nav"
 .project {
   &__title--wrapper {
@@ -99,6 +175,11 @@ li {
     }
   }
   &__form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    padding-top: 0 0 10px 0;
   }
   &__label {
   }
@@ -108,13 +189,15 @@ li {
     outline: none;
     background-color: $medium;
     color: $bgColor;
+    font-size: 1.5rem;
 
     &::placeholder {
+      padding: 10px 20px;
       text-align: center;
       background-color: $medium;
       color: $bgColor;
       opacity: 0.5;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-style: italic;
     }
   }
@@ -135,13 +218,14 @@ li {
     outline: none;
     background-color: $medium;
     color: $bgColor;
+    font-size: 1.5rem;
 
     &::placeholder {
       text-align: center;
       background-color: $medium;
       color: $bgColor;
       opacity: 0.5;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-style: italic;
     }
   }
@@ -153,5 +237,7 @@ li {
   justify-content: space-between;
   align-items: center;
   padding: 5px 0;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
+  color: $bgColor;
+  opacity: 0.7;
 }

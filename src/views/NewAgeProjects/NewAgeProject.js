@@ -84,9 +84,6 @@ export const NewAgeProject = () => {
         <h1 className="project__title">{project.projectName}</h1>
       </div>
       <form className="project__form" onSubmit={addColumn} autoComplete="off">
-        {/* <label className='project__label' htmlFor='column-name'>
-          Add New List
-        </label> */}
         <input
           required
           pattern="^[^\s]+(\s+[^\s]+)*$"
