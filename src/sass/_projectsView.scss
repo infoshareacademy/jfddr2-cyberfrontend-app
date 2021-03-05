@@ -3,7 +3,7 @@
 
 ///////////////
 .board-wrapper {
-  @include breakpoint-desktop {
+  @include breakpoint-tablet-large {
     position: absolute;
     right: 0;
     top: 0;
@@ -19,7 +19,7 @@
     .board__userName {
       font-size: 2.5rem;
       padding-left: 10px;
-      @include breakpoint-desktop {
+      @include breakpoint-tablet-large {
         padding-left: 30px;
         font-size: 3rem;
         margin-right: auto;
@@ -29,7 +29,7 @@
 }
 
 .projectsContainer {
-  @include breakpoint-desktop {
+  @include breakpoint-tablet-large {
   }
 
   .board-header {
@@ -39,21 +39,21 @@
       align-items: center;
       color: $bgColor;
       font-size: 1.5rem;
-      @include breakpoint-desktop {
+      @include breakpoint-tablet-large {
       }
     }
     .projectsContainer__newProjectBtn {
-      @include breakpoint-desktop {
+      @include breakpoint-tablet-large {
       }
     }
-    @include breakpoint-desktop {
+    @include breakpoint-tablet-large {
       display: flex;
       justify-content: space-between;
       flex-direction: row-reverse;
     }
   }
   .projectsContainer__newProjects {
-    @include breakpoint-desktop {
+    @include breakpoint-tablet-large {
     }
   }
 }
@@ -86,7 +86,7 @@
 
 .task__list {
   min-height: 150px;
-  @include breakpoint-desktop {
+  @include breakpoint-tablet-large {
     padding: 5px 20px;
   }
 }
@@ -98,7 +98,7 @@
   font-weight: bold;
   text-transform: uppercase;
   color: $bgColor;
-  @include breakpoint-desktop {
+  @include breakpoint-tablet-large {
     margin-left: 100px;
     width: auto;
   }
@@ -123,20 +123,20 @@
   }
   .project__form {
     //te dwa absoluty togluja inputy
-    @include breakpoint-desktop {
+    @include breakpoint-tablet-large {
       position: absolute;
       right: 10px;
       top: 10px;
     }
   }
   .task__form {
-    @include breakpoint-desktop {
+    @include breakpoint-tablet-large {
       position: absolute;
       right: 10px;
       top: 10px;
     }
   }
-  @include breakpoint-desktop {
+  @include breakpoint-tablet-large {
     position: absolute;
     right: 0;
     top: 0;
